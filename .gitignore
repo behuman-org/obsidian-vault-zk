@@ -1,0 +1,14 @@
+# Obsidian: caché de workspace y estado local (no compartible)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.obsidian/.DS_Store
+
+# macOS
+.DS_Store
+
+# Sistema / editores
+*.tmp
+*.swp
+.idea/
+.vscode/
