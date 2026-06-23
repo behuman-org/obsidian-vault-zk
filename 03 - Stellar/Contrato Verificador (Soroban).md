@@ -1,5 +1,3 @@
-# Contrato Verificador (Soroban)
-
 El corazón on-chain del proyecto: un contrato Soroban que **verifica la prueba ZK** y
 mantiene el **registro de addresses con KYC válido**.
 
@@ -96,12 +94,12 @@ impl KycVerifier {
 El contrato y el [[Diseño del Circuito ZK|circuito]] deben acordar exactamente qué señales
 son públicas y en qué orden:
 
-| Índice | Señal pública | Para qué |
-|---|---|---|
-| 0 | `issuer_root` | El contrato comprueba que es un issuer de confianza |
-| 1 | `address_hash` | Binding de la prueba al address del usuario (anti-reventa) |
-| 2 | `nullifier` | Anti-replay / anti doble registro |
-| 3+ | `predicado(s)` | Ej. `is_adult = 1`, `country_ok = 1` |
+| Índice | Señal pública  | Para qué                                                   |
+| ------ | -------------- | ---------------------------------------------------------- |
+| 0      | `issuer_root`  | El contrato comprueba que es un issuer de confianza        |
+| 1      | `address_hash` | Binding de la prueba al address del usuario (anti-reventa) |
+| 2      | `nullifier`    | Anti-replay / anti doble registro                          |
+| 3+     | `predicado(s)` | Ej. `is_adult = 1`, `country_ok = 1`                       |
 
 ## Consideraciones de Soroban
 
