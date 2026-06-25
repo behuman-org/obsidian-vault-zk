@@ -77,9 +77,13 @@ Mapa de contenidos (MOC) de la vault. Punto de entrada para todo el proyecto.
 - [x] **Monorepo `beHuman` scaffoldeado** (por capas: `identity/` + `platform/`) →
   https://github.com/ACRC-Zk/beHuman · ver [[Estructura del Codigo]]
 - [x] Skills de IA instaladas en el repo → [[Skills de IA para construir]]
-- [ ] Decidir herramienta ZK definitiva (ver [[Comparativa de Herramientas ZK]])
-- [ ] Diseñar e implementar el circuito de credencial KYC ([[Diseño del Circuito ZK]])
-- [ ] Implementar contrato verificador en Soroban ([[Contrato Verificador (Soroban)]])
+- [x] **Rama `kyc-zk`: CAPA 1 (identidad) IMPLEMENTADA y testeada** ← ¡Acá estamos!
+  - [x] Circuito Circom (BLS12-381 + Merkle) → [[Diseño del Circuito ZK]]
+  - [x] Contrato `kyc_verifier` (init, verify_and_register, tests con testdata)
+  - [x] Matcher (face-api + liveness + de-dup) → [[Matcher de Identidad (Gate de Capa 1)]]
+  - [x] SDK (generateProof, verifyAndRegister, addressHash, encodings)
+  - [x] E2E demo en testnet (`scripts/e2e_demo.sh`)
+  - [ ] Integración en frontend: Stellar Wallets Kit + llamada on-chain desde navegador
 - [ ] Implementar capa 2: `opinion_board` + backend + curaduría ([[Plataforma de Opinión Verificada]])
 - [ ] Demo end-to-end + video (3 min)
 

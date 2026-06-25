@@ -33,7 +33,7 @@ flowchart TB
 
 | Componente | Dónde | Responsabilidad |
 |---|---|---|
-| **Issuer KYC** | Off-chain | Verifica identidad real (una vez) y emite credencial firmada. En el MVP es un **mock** (declarado en README). → [[Modelo de Datos]] |
+| **Issuer KYC** | Off-chain | Verifica identidad real (una vez) y emite credencial firmada. En el MVP es un **mock**; para testnet ese paso lo hace el [[Matcher de Identidad (Gate de Capa 1)\|matcher de cara]] (DNI + cámara). → [[Modelo de Datos]] |
 | **Wallet / Cliente** | Off-chain | Guarda la credencial del usuario; orquesta el flujo. |
 | **Prover** | Off-chain | Genera la prueba ZK a partir de la credencial + predicado. Es el cómputo pesado. → [[Diseño del Circuito ZK]] |
 | **KycVerifier** | On-chain (Soroban) | Verifica la prueba con [[Primitivas ZK en Stellar\|host functions]] y registra el address. → [[Contrato Verificador (Soroban)]] |

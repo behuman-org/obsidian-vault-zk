@@ -2,30 +2,36 @@
 
 Estructuras de datos que viven en cada capa: la credencial off-chain y el estado on-chain.
 
-## La credencial KYC (off-chain)
+## La credencial KYC (off-chain) — `Capa1Credential`
 
-Lo que el [[Arquitectura General|issuer]] emite y la wallet guarda:
+Lo que el [[Arquitectura General|issuer]] emite (tras pasar el gate del matcher) y la wallet
+guarda. Estructura en `packages/shared/src/index.ts`:
 
-```json
-{
-  "version": 1,
-  "issuer_id": "did:stellar:G...ISSUER",
-  "attributes": {
-    "birth_year": 1995,
-    "country_code": "AR",
-    "kyc_level": 2
-  },
-  "secret": "0x<random_field_element>",
-  "commitment": "0x<poseidon(birth_year, country_code, secret)>",
-  "issuer_signature": "0x<firma del issuer sobre el commitment>",
-  "issued_at": "2026-06-22T00:00:00Z"
+```typescript
+interface Capa1Credential {
+  attributes: IdentityAttributes;      // { birthYear, countryCode (ISO 3166-1 numérico) }
+  secret: string;                       // elemento de campo (decimal), generado en el device
+  commitment: string;                   // Poseidon(birthYear, countryCode, secret)
+  issuerRoot: string;                   // raíz Merkle del árbol de credenciales
+  pathElements: string[];               // hermanos del Merkle path
+  pathIndices: number[];                // 0/1 por nivel
 }
 ```
 
-- `attributes` + `secret` son **privados** (nunca salen del cliente).
-- `commitment` y `issuer_signature` son lo que prueba la pertenencia al issuer.
-- En el MVP el issuer es un **mock** que firma con una clave de prueba (declarado en
-  README).
+- **Atributos:** `birthYear` (para edad), `countryCode` (ISO numérico, ej. AR=32). **Privados:**
+  nunca salen del cliente.
+- **Secret:** elemento de campo (generado en el device, el usuario lo guarda). Determinístico
+  (no random): mejora reproducibilidad.
+- **Commitment:** `Poseidon(birthYear, countryCode, secret)`. Es la "semilla" de la identidad.
+- **Merkle proof:** (issuerRoot, pathElements, pathIndices) prueba que el commitment pertenece
+  al árbol del issuer.
+- En el MVP el issuer es un **mock** (face-api local); en producción será RENAPER/SID.
+
+**Flujo:** usuario pasa gate (DNI + cara) → enroll → issuer crea Capa1Credential → se guarda
+en device → se usa para generar prueba.
+
+Relacionado: [[Matcher de Identidad (Gate de Capa 1)]] (de-dup, `DEDUP_PEPPER`),
+[[Implementación en rama kyc-zk#4. SDK Cliente]].
 
 ## Estado on-chain (Soroban storage)
 
@@ -80,7 +86,21 @@ flowchart TD
 ## Qué NO se guarda nunca on-chain
 
 - ❌ Nombre, documento, fecha de nacimiento, país concreto.
-- ❌ El commitment crudo o la firma del issuer (no hace falta: viven en el witness).
+- ❌ El commitment crudo o las imágenes (no hace falta: viven en el witness).
 - ✅ Sólo: *este address está verificado* + nullifiers consumidos.
 
-Relacionado: [[Diseño del Circuito ZK]] · [[Contrato Verificador (Soroban)]] · [[Problema y Solucion]]
+---
+
+## Implementación (rama `kyc-zk`)
+
+Código real en:
+
+- **Capa1Credential:** `packages/shared/src/index.ts` (tipos TS).
+- **Generación:** `identity/issuer/` (matcher valida DNI+cara → enroll genera Capa1Credential).
+- **Circuito:** `identity/circuits/src/kyc.circom` (consume Capa1Credential en el witness).
+- **On-chain storage:** `identity/contracts/kyc_verifier/src/lib.rs` (Verified map + Nullifier set).
+- **Testdata:** `identity/contracts/kyc_verifier/src/testdata.rs` (snapshot para tests).
+
+Detalles en [[Implementación en rama kyc-zk]].
+
+Relacionado: [[Diseño del Circuito ZK]] · [[Contrato Verificador (Soroban)]] · [[Matcher de Identidad (Gate de Capa 1)]]

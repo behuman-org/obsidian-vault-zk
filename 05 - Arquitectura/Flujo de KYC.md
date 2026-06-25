@@ -20,6 +20,12 @@ sequenceDiagram
     Note over U,I: La PII sólo la ve el issuer. Nunca toca la cadena.
 ```
 
+> [!note] El `verifica identidad (KYC real)` en testnet
+> Ese paso es el **gate del matcher**: el usuario sube la foto del DNI y escanea su cara con
+> la cámara; solo si **coinciden** (match 1:1 + liveness) el issuer crea la identidad de
+> Capa 1. Detalle en [[Matcher de Identidad (Gate de Capa 1)]] y spec en
+> [[Spec — Matcher DNI + Selfie (Capa 1)]]. En producción se reemplaza por RENAPER.
+
 ## Fase 2 — Generación de la prueba (cada vez que hace falta)
 
 ```mermaid
@@ -89,3 +95,20 @@ flowchart LR
 - La **PII nunca sale del cliente** salvo hacia el issuer en la Fase 1.
 
 Detalle criptográfico en [[Diseño del Circuito ZK]] y [[Modelo de Datos]].
+
+---
+
+## Implementación (rama `kyc-zk`)
+
+Todo el flujo está implementado y testeado. Detalles en [[Implementación en rama kyc-zk]]:
+
+- **Fase 1:** matcher en `identity/issuer/matcher/` (face-api + liveness + de-dup).
+- **Fase 2:** SDK en `packages/sdk/src/index.ts` (generateProof, addressHash exacto, encodings).
+- **Fase 3:** contrato `identity/contracts/kyc_verifier/` (init, verify_and_register, tests).
+- **Fase 4:** `is_verified` ya deployable.
+- **E2E:** `scripts/e2e_demo.sh` valida el flujo en testnet (Node).
+
+**Próximo paso:** integrar SDK en frontend (`web/`), conectar wallet (Stellar Wallets Kit),
+llamada a `verify_and_register` desde el navegador.
+
+Relacionado: [[Implementación en rama kyc-zk]], [[Diseño del Circuito ZK]], [[Matcher de Identidad (Gate de Capa 1)]].

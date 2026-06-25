@@ -69,20 +69,33 @@ flowchart TD
 5. **Nullifier bien formado** — `nullifier == Poseidon(secret, address_hash)`. Liga el
    secreto al address sin revelar el secreto, y permite anti-replay.
 
-## Decisiones de diseño
+## Decisiones de diseño (implementadas en `kyc-zk`)
 
-- **Poseidon** para todos los hashes: es ZK-friendly y **nativo en Stellar**
-  (Protocolo 25). → [[Primitivas ZK en Stellar]]
-- **Predicados como salidas públicas booleanas**: el verificador y la dApp ven sólo
-  `is_adult = 1`, nunca la edad real.
+- **Curva: BLS12-381** (NO BN254 por defecto de Circom).
+  - Razón: el verificador on-chain es el `groth16_verifier` oficial de soroban-examples,
+    que usa host functions BLS12-381 (CAP-0059, disponible).
+  - BN254/Poseidon nativas (CAP-0074/75) siguen siendo propuestas, no disponibles.
+  - Implicación: Poseidon con constantes de circomlib (BN254) reusadas sobre el campo
+    BLS12-381. Válido para MVP; en producción, parámetros Poseidon específicos del campo.
+  - Detalle técnico: ver `identity/circuits/src/kyc.circom`, línea 17-32.
+
+- **Poseidon** para todos los hashes (commitment, nullifier, hash de inclusión Merkle):
+  es ZK-friendly. → [[Primitivas ZK en Stellar]]
+
+- **Predicados como salidas públicas booleanas**: el verificador ve sólo `is_adult = 1`,
+  nunca la edad real.
+
 - **Address binding** vía `address_hash` en el nullifier y validado por el
   [[Contrato Verificador (Soroban)|contrato]]: evita reventa de pruebas.
-- **Issuer: firma vs Merkle tree.**
-  - *Firma (EdDSA/Poseidon):* el issuer firma cada commitment; `issuer_root` = clave
-    pública. Más simple para el MVP.
-  - *Merkle tree:* el issuer publica una raíz de todas las credenciales emitidas; la
-    prueba incluye un Merkle path. Mejor para revocación/escala (future work).
-  - 🎯 **MVP:** empezar con **firma**; documentar Merkle como evolución.
+
+- **Issuer: Merkle tree (implementado)**, NO firma EdDSA.
+  - El issuer publica un árbol Merkle de credenciales; cada prueba incluye un Merkle path.
+  - `issuerRoot` = raíz del árbol.
+  - La inclusión Merkle es curva-agnóstica (funciona sobre BLS12-381).
+  - EdDSA/BabyJubJub NO funciona: está definido sobre el campo escalar de BN254, inválido
+    bajo BLS12-381.
+  - Mejor para revocación, anti-sybil, y escala.
+  - Implementación: `MerkleInclusion(LEVELS)` template en el circuito.
 
 ## Contrato de interfaz con el verificador
 

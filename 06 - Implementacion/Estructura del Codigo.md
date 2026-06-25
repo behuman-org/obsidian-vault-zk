@@ -26,7 +26,7 @@ beHuman/
 ├── identity/                 # ── CAPA 1 · KYC con ZK ──
 │   ├── circuits/             #   Circom — src/kyc.circom + scripts (compile/setup/prove)
 │   ├── contracts/            #   Soroban — kyc_verifier (verify_and_register + is_verified)
-│   └── issuer/               #   Issuer KYC mock (TS)
+│   └── issuer/               #   Issuer KYC (mock) + matcher/ (gate DNI+selfie, testnet)
 │
 ├── platform/                 # ── CAPA 2 · Plataforma de opinión ──
 │   ├── contracts/            #   Soroban — opinion_board (ancla: autor verificado + hash)
@@ -54,9 +54,22 @@ beHuman/
 | [[Contrato Verificador (Soroban)]] | `identity/contracts/kyc_verifier/src/lib.rs` |
 | [[Modelo de Datos]] | credencial en `identity/issuer/`, storage en `identity/contracts/` + `packages/shared` |
 | [[Flujo de KYC]] | `packages/sdk/` + `web/` + `scripts/e2e_demo.sh` |
+| [[Spec — Matcher DNI + Selfie (Capa 1)]] | `identity/issuer/matcher/` + `web/` (captura) + `packages/shared` |
 | [[Plataforma de Opinión Verificada]] | `platform/contracts/opinion_board` + `platform/api` |
 | [[Curaduría y Agentes Validadores]] | `platform/curation` |
 | [[Plan de Demo]] | `scripts/e2e_demo.sh` (lo que graba el video) |
+
+## Rama `kyc-zk` — CAPA 1 IMPLEMENTADA
+
+**Status:** circuito compilando, contrato con tests, matcher validando DNI+cara, SDK con
+generateProof/verifyAndRegister, e2e_demo en testnet ✅
+
+Detalles en [[Implementación en rama kyc-zk]].
+
+Próximo paso: integrar SDK en el frontend (`web/`), conectar Stellar Wallets Kit, permitir
+que `verify_and_register` se llame desde el navegador.
+
+---
 
 ## Convenciones
 
@@ -65,4 +78,4 @@ beHuman/
 - Declarar explícitamente en los README qué partes son **mock** (issuer, datos de
   ejemplo) — lo pide la hackathon.
 
-Relacionado: [[Setup del Entorno]] · [[Roadmap]] · [[Arquitectura General]]
+Relacionado: [[Setup del Entorno]] · [[Roadmap]] · [[Arquitectura General]] · [[Implementación en rama kyc-zk]]
