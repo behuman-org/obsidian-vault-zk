@@ -49,12 +49,17 @@ Mapa de contenidos (MOC) de la vault. Punto de entrada para todo el proyecto.
 - [[Flujo de KYC]]
 - [[Diseño del Circuito ZK]]
 - [[Modelo de Datos]]
+- [[Decisiones técnicas y trade-offs]] — por qué cada decisión y sus implicancias
+- [[Matcher de Identidad (Gate de Capa 1)]] — validación DNI + cara en vivo
 
 ### 06 · Implementación
 - [[Setup del Entorno]]
 - [[Estructura del Codigo]]
 - [[Roadmap]]
 - [[Plan de Demo]]
+- [[Implementación en rama kyc-zk]] — registro completo del viaje
+- [[Registro de cambios y mejoras]] — decisiones y mejoras implementadas
+- [[Estado actual del desarrollo]] — qué está hecho, en progreso, y próximos pasos
 
 ### 07 · Investigación
 - [[Notas y Referencias]]
