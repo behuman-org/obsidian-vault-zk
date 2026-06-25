@@ -55,10 +55,32 @@ alta confianza**, imposible de inundar con bots o cuentas falsas.
 | Desinformación sin filtro | Curaduría con [[Curaduría y Agentes Validadores\|agentes + moderadores]] |
 | Exposición / miedo a opinar | Anonimato verificado ([[Identidad Pública vs Anónima]]) |
 
+## Implementación (primera iteración, en `main`)
+
+La Capa 2 ya tiene una **primera iteración funcionando en testnet**, construida con **ZK como
+núcleo** (PR #2). Detalle técnico en [[Implementación Capa 2 (plataforma)]].
+
+- **Identidad anónima:** no se usa el address del KYC; cada persona es un `platformId =
+  Poseidon(secret, SCOPE)`, incorrelacionable con su KYC/PII →
+  [[Identidad anónima de plataforma (platformId)]].
+- **Participación gateada por ZK:** una prueba de pertenencia al árbol del issuer (mismos
+  humanos verificados de Capa 1), no por `is_verified(address)`.
+- **Perfil + username + handle** (últimos 5 del platformId), off-chain keyed por platformId.
+- **Primer post:** opinión sobre la comida argentina, anclada on-chain (hash) con contenido
+  off-chain (modelo híbrido).
+- **Anonimato del fee:** la tx la paga una cuenta efímera, no el address del KYC.
+
+Esto responde las preguntas abiertas de abajo: la autoría on-chain es por `platformId`, y
+el contenido pesado va off-chain con ancla on-chain.
+
 ## Preguntas abiertas
 
 - [ ] ¿La lectura es libre para todos o sólo para verificados? → [[Identidad Pública vs Anónima#Visibilidad y acceso]]
-- [ ] ¿Cómo se estructuran los hilos/foros y la autoría on-chain? (modelo de datos de la app)
-- [ ] ¿Qué se guarda on-chain y qué off-chain (contenido pesado como PDFs de estudios)?
+- [x] ¿Cómo se estructura la autoría on-chain? → por `platformId` (seudónimo anónimo).
+- [x] ¿Qué on-chain y qué off-chain? → on-chain: ancla (platformId + contentHash); off-chain: contenido + perfil.
+- [ ] ¿Username único o libre? (hoy: libre, sin unicidad).
+- [ ] Curaduría: aún no implementada → [[Curaduría y Agentes Validadores]].
 
-Relacionado: [[IDEA]] · [[Prueba de Persona Única]] · [[Curaduría y Agentes Validadores]] · [[Identidad Pública vs Anónima]]
+Relacionado: [[IDEA]] · [[Prueba de Persona Única]] · [[Curaduría y Agentes Validadores]] ·
+[[Identidad Pública vs Anónima]] · [[Identidad anónima de plataforma (platformId)]] ·
+[[Implementación Capa 2 (plataforma)]]

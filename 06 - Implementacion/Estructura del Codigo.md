@@ -28,16 +28,18 @@ beHuman/
 │   ├── contracts/            #   Soroban — kyc_verifier (verify_and_register + is_verified)
 │   └── issuer/               #   Issuer KYC (mock) + matcher/ (gate DNI+selfie, testnet)
 │
-├── platform/                 # ── CAPA 2 · Plataforma de opinión ──
-│   ├── contracts/            #   Soroban — opinion_board (ancla: autor verificado + hash)
-│   ├── api/                  #   Backend: feed, posts, contenido off-chain (TS)
-│   └── curation/             #   Agentes validadores (IA, Claude API) + moderación (TS)
+├── platform/                 # ── CAPA 2 · Plataforma de opinión (anónima por ZK) ──
+│   ├── circuits/             #   Circom — post.circom (membership + platformId + contentHash)
+│   ├── contracts/            #   Soroban — opinion_board (ancla: platformId + contentHash)
+│   ├── api/                  #   Backend: feed, perfil/username, contenido off-chain (TS)
+│   └── curation/             #   Agentes validadores (IA) + moderación (TS) — futuro
 │
 ├── packages/
 │   ├── sdk/                  #   Prover + tx Stellar (generateProof · buildVerifyTx · anchorPost)
 │   └── shared/               #   Tipos TS compartidos (VerifiedAddress · Post · CurationVerdict)
 │
 ├── web/                      # Frontend React + Vite + TS (único)
+│   └── src/                  #   kyc/ (Capa 1) + platform/ (Capa 2)
 ├── scripts/                  # deploy_testnet.sh · e2e_demo.sh
 └── docs/                     # enlaza a esta vault
 ```

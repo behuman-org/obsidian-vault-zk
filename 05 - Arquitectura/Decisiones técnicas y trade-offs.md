@@ -175,6 +175,57 @@ navegador.
 
 ---
 
+## Decisiones de la CAPA 2 (plataforma anónima)
+
+### 9. Identidad de plataforma = `platformId`, no el address del KYC
+
+**Decisión:** en la plataforma, la identidad es `platformId = Poseidon(secret, SCOPE)`, no
+el address verificado.
+
+**Razón:** postear con el address linkearía la opinión a la tx de KYC y a todo el historial
+on-chain → seudónimo, no anónimo. `platformId` es incorrelacionable con el address/PII.
+
+**Trade-off:** se necesita un **circuito nuevo** (membership + platformId) y manejar la
+derivación en el cliente. Más trabajo que "postear con la wallet".
+
+**Futuro:** múltiples `SCOPE` para identidades por contexto no linkeables entre sí.
+
+→ [[Identidad anónima de plataforma (platformId)]].
+
+### 10. Gate por pertenencia a `issuerRoot`, no por `is_verified(address)`
+
+**Decisión:** la plataforma gatea con prueba ZK de inclusión en el árbol del issuer, no con
+la consulta `is_verified(address)`.
+
+**Razón:** `is_verified(address)` obliga a actuar *como* el address → deanonimiza. La
+pertenencia prueba "soy del set" sin decir cuál.
+
+**Trade-off:** prueba ZK por acción (más cómputo que una consulta de storage).
+
+**Futuro:** registrar la identidad una vez y firmar posts con clave anónima (proof más
+liviano por post).
+
+### 11. Cuenta efímera para pagar el fee
+
+**Decisión:** la tx on-chain la paga una cuenta efímera (friendbot), no el address del KYC.
+
+**Razón:** el fee-payer es público; si fuera el address del KYC, delataría a la persona.
+
+**Trade-off:** en testnet usa friendbot (no sirve en mainnet); UX extra (fondear).
+
+**Futuro:** **relayer** o meta-transacciones en producción.
+
+### 12. `contentHash` atado dentro de la prueba
+
+**Decisión:** el `contentHash` del post es input público forzado al sistema de constraints.
+
+**Razón:** ata la prueba al contenido exacto → una prueba no se puede reusar para otro texto
+(anti-replay). Junto con `Posted(platformId, contentHash)` on-chain, evita duplicados.
+
+**Trade-off:** cada edición de contenido requiere una prueba nueva.
+
+---
+
 ## Matriz de decisiones
 
 | Decisión | MVP | Producción | Crítica | Auditar |
@@ -187,6 +238,10 @@ navegador.
 | localStorage | ✅ | 🟡 (+encrypted backend opt) | 🟡 | 🟢 NO |
 | Wallets Kit | ✅ | ✅ | 🟢 NO | 🟢 NO |
 | Merkle path public | ✅ | ✅ | 🟡 | 🟢 NO |
+| platformId (Capa 2) | ✅ | ✅ | 🔴 SÍ | 🔴 SÍ |
+| Gate por issuerRoot (Capa 2) | ✅ | ✅ | 🔴 SÍ | 🔴 SÍ |
+| Cuenta efímera p/ fee | ✅ | ❌ (relayer) | 🟡 | 🟢 NO |
+| contentHash en la prueba | ✅ | ✅ | 🟡 | 🟢 NO |
 
 **Crítica:** decisión que afecta seguridad criptográfica.
 **Auditar:** decisión que requiere revisión por expertos.

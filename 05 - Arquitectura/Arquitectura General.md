@@ -69,32 +69,44 @@ flowchart LR
 
 ## beHuman completo: las dos capas juntas
 
-La capa 4 (*dApp consumidora*) **es** la [[Plataforma de Opinión Verificada]]. Todo el
-sistema encaja así, y el **único punto de unión** entre la identidad y la plataforma es
-`is_verified(address)`:
+La capa 4 (*dApp consumidora*) **es** la [[Plataforma de Opinión Verificada]].
 
 ```mermaid
 flowchart TB
     subgraph C1["🔐 CAPA 1 · Identidad (KYC-ZK)"]
-        ISS["Issuer mock"] --> PROV["Prover (circuito)"]
+        ISS["Issuer + árbol Merkle"] --> PROV["Prover (circuito)"]
         PROV --> VER["kyc_verifier (Soroban)"]
         VER --> REG["✅ Registro: address → verificado + nullifier"]
+        ISS --> ROOT["🌳 issuerRoot<br/>(set de humanos verificados)"]
     end
-    subgraph C2["🗣️ CAPA 2 · Plataforma de opinión"]
-        API["Backend: feed / posts / contenido off-chain"]
-        CUR["🤖 Agentes curadores + 🧑‍⚖️ moderación"]
-        BOARD["opinion_board (ancla on-chain: autor + hash)"]
+    subgraph C2["🗣️ CAPA 2 · Plataforma de opinión (anónima)"]
+        BOARD["opinion_board (ancla: platformId + contentHash)"]
+        API["Backend: feed / perfil / contenido off-chain"]
+        CUR["🤖 Curaduría (futuro)"]
     end
-    REG -->|"is_verified(address)?"| API
-    REG -->|"autor verificado"| BOARD
+    ROOT -->|"prueba ZK de pertenencia<br/>(sin revelar quién)"| BOARD
+    BOARD --> API
     API --> CUR
     style C1 fill:#e8f0fe
     style C2 fill:#e6f4ea
 ```
 
-- **Identidad en la plataforma:** seudónimo estable → [[Identidad Pública vs Anónima]].
+### Los dos puentes entre capas
+
+Hay **dos formas** de consumir la identidad de Capa 1, según se necesite identidad o anonimato:
+
+| Puente | Para qué | Cómo |
+|---|---|---|
+| **`is_verified(address)`** | dApps genéricas (rampas, pools, RWA): "este address es un humano único". | El consumidor consulta el registro on-chain por address. **Seudónimo (linkeable al address).** |
+| **Pertenencia a `issuerRoot`** | La **plataforma anónima**: "soy un humano del set verificado, pero no digo cuál". | Prueba ZK de inclusión Merkle, identidad = `platformId`. **Anónimo (no toca el address).** |
+
+> 🔑 La plataforma de opinión usa el **segundo** puente: nunca el address.
+> → [[Identidad anónima de plataforma (platformId)]].
+
+- **Identidad en la plataforma:** `platformId = Poseidon(secret, SCOPE)` → [[Identidad Pública vs Anónima]].
 - **Almacenamiento capa 2:** híbrido (ancla on-chain + contenido off-chain).
-- **Curaduría:** off-chain (agentes IA + moderación) → [[Curaduría y Agentes Validadores]].
+- **Fee on-chain:** cuenta efímera (no el address del KYC).
+- **Curaduría:** off-chain, aún no implementada → [[Curaduría y Agentes Validadores]].
 
 ### Mapeo arquitectura → código (monorepo `beHuman`)
 
@@ -103,11 +115,14 @@ flowchart TB
 | Issuer KYC (mock) | 1 | `identity/issuer/` |
 | Circuito + Prover | 1 | `identity/circuits/` + `packages/sdk/` |
 | KycVerifier + Registro | 1 | `identity/contracts/kyc_verifier/` |
+| Circuito de plataforma (membership + platformId) | 2 | `platform/circuits/` |
 | Plataforma (ancla on-chain) | 2 | `platform/contracts/opinion_board/` |
-| Backend / feed / contenido | 2 | `platform/api/` |
-| Curaduría (agentes + moderación) | 2 | `platform/curation/` |
-| Frontend | — | `web/` |
+| Backend / feed / perfil / contenido | 2 | `platform/api/` |
+| Curaduría (agentes + moderación) | 2 | `platform/curation/` *(futuro)* |
+| Frontend (Capa 1 + Capa 2) | — | `web/src/kyc/` + `web/src/platform/` |
 
 → Estructura completa en [[Estructura del Codigo]].
 
-Relacionado: [[Flujo de KYC]] · [[Diseño del Circuito ZK]] · [[Modelo de Datos]] · [[Contrato Verificador (Soroban)]] · [[Plataforma de Opinión Verificada]]
+Relacionado: [[Flujo de KYC]] · [[Diseño del Circuito ZK]] · [[Modelo de Datos]] ·
+[[Contrato Verificador (Soroban)]] · [[Plataforma de Opinión Verificada]] ·
+[[Identidad anónima de plataforma (platformId)]] · [[Implementación Capa 2 (plataforma)]]

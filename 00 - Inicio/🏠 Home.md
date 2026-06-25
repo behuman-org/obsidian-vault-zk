@@ -51,13 +51,15 @@ Mapa de contenidos (MOC) de la vault. Punto de entrada para todo el proyecto.
 - [[Modelo de Datos]]
 - [[Decisiones técnicas y trade-offs]] — por qué cada decisión y sus implicancias
 - [[Matcher de Identidad (Gate de Capa 1)]] — validación DNI + cara en vivo
+- [[Identidad anónima de plataforma (platformId)]] — el ZK de la Capa 2
 
 ### 06 · Implementación
 - [[Setup del Entorno]]
 - [[Estructura del Codigo]]
 - [[Roadmap]]
 - [[Plan de Demo]]
-- [[Implementación en rama kyc-zk]] — registro completo del viaje
+- [[Implementación en rama kyc-zk]] — Capa 1: registro completo del viaje
+- [[Implementación Capa 2 (plataforma)]] — Capa 2: plataforma anónima por ZK
 - [[Registro de cambios y mejoras]] — decisiones y mejoras implementadas
 - [[Estado actual del desarrollo]] — qué está hecho, en progreso, y próximos pasos
 
@@ -82,14 +84,16 @@ Mapa de contenidos (MOC) de la vault. Punto de entrada para todo el proyecto.
 - [x] **Monorepo `beHuman` scaffoldeado** (por capas: `identity/` + `platform/`) →
   https://github.com/ACRC-Zk/beHuman · ver [[Estructura del Codigo]]
 - [x] Skills de IA instaladas en el repo → [[Skills de IA para construir]]
-- [x] **Rama `kyc-zk`: CAPA 1 (identidad) IMPLEMENTADA y testeada** ← ¡Acá estamos!
+- [x] **CAPA 1 (identidad) IMPLEMENTADA y testeada** → [[Implementación en rama kyc-zk]]
   - [x] Circuito Circom (BLS12-381 + Merkle) → [[Diseño del Circuito ZK]]
-  - [x] Contrato `kyc_verifier` (init, verify_and_register, tests con testdata)
-  - [x] Matcher (face-api + liveness + de-dup) → [[Matcher de Identidad (Gate de Capa 1)]]
-  - [x] SDK (generateProof, verifyAndRegister, addressHash, encodings)
-  - [x] E2E demo en testnet (`scripts/e2e_demo.sh`)
-  - [ ] Integración en frontend: Stellar Wallets Kit + llamada on-chain desde navegador
-- [ ] Implementar capa 2: `opinion_board` + backend + curaduría ([[Plataforma de Opinión Verificada]])
+  - [x] Contrato `kyc_verifier` + matcher (face-api + de-dup) + SDK + frontend on-chain
+  - [x] E2E demo en testnet
+- [x] **CAPA 2 (plataforma anónima) PRIMERA ITERACIÓN** → [[Implementación Capa 2 (plataforma)]]
+  - [x] Identidad anónima `platformId` (ZK) → [[Identidad anónima de plataforma (platformId)]]
+  - [x] Circuito de plataforma + contrato `opinion_board` (tests)
+  - [x] Perfil/username + handle + feed (off-chain)
+  - [x] Primer post (opinión comida argentina) anclado on-chain con cuenta efímera
+  - [ ] Curaduría (`platform/curation`) → [[Curaduría y Agentes Validadores]]
 - [ ] Demo end-to-end + video (3 min)
 
 ## ❓ Decisiones abiertas

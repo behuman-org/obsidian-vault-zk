@@ -103,4 +103,48 @@ Código real en:
 
 Detalles en [[Implementación en rama kyc-zk]].
 
-Relacionado: [[Diseño del Circuito ZK]] · [[Contrato Verificador (Soroban)]] · [[Matcher de Identidad (Gate de Capa 1)]]
+---
+
+## Modelo de datos de la CAPA 2 (plataforma)
+
+La plataforma **no usa el address**: la clave de todo es el `platformId` (seudónimo anónimo).
+Detalle en [[Identidad anónima de plataforma (platformId)]].
+
+### On-chain (`opinion_board`)
+
+| Clave de storage | Tipo | Contenido |
+|---|---|---|
+| `Config` | struct | admin + `trusted_issuer_root` (la raíz del issuer de Capa 1) |
+| `Vk` | VerificationKey | VK del circuito de plataforma |
+| `Identity(platformId)` | bool | identidades anónimas registradas |
+| `Post(id)` | PostRecord | `{ platformId, content_hash, timestamp }` |
+| `PostCount` | u64 | contador de posts |
+| `Posted(platformId, content_hash)` | bool | anti-replay (un contenido por identidad) |
+
+**Public signals de la prueba:** `[issuerRoot, platformId, contentHash]`.
+
+### Off-chain (`platform/api`, store keyed por platformId)
+
+```typescript
+interface Profile { username: string; handle: string; }   // handle = últimos 5 de platformId
+interface PostItem {
+  platformId: string;       // seudónimo anónimo (NO address)
+  handle: string;
+  username: string;
+  content: string;          // el texto del post
+  contentHash: string;      // coincide con el anclado on-chain
+  txHash: string;           // tx del ancla (cuenta efímera, sin address KYC)
+  ts: number;
+}
+```
+
+### Qué NO se guarda nunca (Capa 2)
+
+- ❌ El address del KYC (en ningún lado de la plataforma).
+- ❌ PII, nombre, documento.
+- ✅ Sólo: `platformId`, username libre, contenido, hashes.
+
+Detalles en [[Implementación Capa 2 (plataforma)]].
+
+Relacionado: [[Diseño del Circuito ZK]] · [[Contrato Verificador (Soroban)]] ·
+[[Matcher de Identidad (Gate de Capa 1)]] · [[Identidad anónima de plataforma (platformId)]]

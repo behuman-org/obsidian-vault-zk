@@ -35,28 +35,39 @@ Snapshot del proyecto: qué está hecho, qué está en progreso, qué falta.
 
 ---
 
-## 🟡 En progreso
+### CAPA 2 — Plataforma de opinión anónima (primera iteración) ✅
 
-### Persistencia de credencial
+Mergeada a `main` (PR #2). ZK como núcleo. Detalle en [[Implementación Capa 2 (plataforma)]].
 
-**Archivo:** `web/src/kyc/credentialStore.ts` (skeleton).
-
-**Qué falta:**
-- [ ] Integración en KycFlow (guardar tras enroll).
-- [ ] Cargar credencial al iniciar (si existe).
-- [ ] UI para mostrar "credencial guardada" vs "nueva".
-
-**Ventaja:** permitir reanudar registro on-chain sin re-enrolar.
+| Componente | Status |
+|---|---|
+| **Circuito de plataforma** (`platform/circuits`, membership + platformId) | ✅ |
+| **Contrato `opinion_board`** (register_identity, post, anti-replay) | ✅ con tests |
+| **Backend** (`platform/api`: perfil + contenido off-chain) | ✅ en :8788 |
+| **Frontend** (`web/src/platform`: identidad anónima + post + feed) | ✅ |
+| **Identidad anónima** (`platformId`, cuenta efímera para fee) | ✅ |
+| **Primer post** (opinión comida argentina, anclado on-chain) | ✅ en testnet |
 
 ---
 
-## ❌ No empezado
+## 🟡 En progreso / pendiente
 
-### CAPA 2 — Plataforma de opinión verificada
+### Persistencia de credencial (Capa 1)
 
-- **Estado:** scaffolding en `platform/` (no tocado).
-- **Cuándo:** después de que CAPA 1 sea rock-solid en testnet.
-- **Depende:** que `is_verified(address)` esté disponible (está ✅).
+`web/src/kyc/credentialStore.ts` — permite reanudar registro sin re-enrolar (ya usado por
+la Capa 2 para cargar la credencial). Pulir UI de "credencial guardada".
+
+### Curaduría (Capa 2)
+
+- **Estado:** scaffolding en `platform/curation/` (no implementado).
+- Agentes validadores (IA) + cola de moderación humana → [[Curaduría y Agentes Validadores]].
+- **Anti-Sybil resistente a evasión:** moderar por `platformId` (determinístico por humano).
+
+### Mejoras de la Capa 2
+
+- [ ] Username único (hoy libre).
+- [ ] Mitigar correlación por timing (KYC ↔ aparición en plataforma).
+- [ ] Relayer en producción (en vez de cuenta efímera friendbot).
 
 ---
 
