@@ -1,3 +1,10 @@
+---
+tags:
+  - concepto
+  - capa/1-identidad
+  - zk
+---
+
 El **núcleo técnico** del proyecto y nuestro diferenciador. Desarrolla la Capa 1 de
 [[IDEA]].
 

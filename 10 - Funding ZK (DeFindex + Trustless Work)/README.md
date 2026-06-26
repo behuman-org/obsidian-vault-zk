@@ -1,3 +1,10 @@
+---
+tags:
+  - funding
+  - capa/3-funding
+  - zk
+---
+
 # 10 — Funding ZK (DeFindex + Trustless Work)
 
 Nueva integración para beHuman: **crowdfunding anónimo para causas**, construido sobre la

@@ -1,3 +1,10 @@
+---
+tags:
+  - funding
+  - capa/3-funding
+  - zk
+---
+
 # 05 — Roles y Modelo de Confianza
 
 Quién puede hacer qué, y por qué la combinación elegida es **segura** (nadie puede llevarse

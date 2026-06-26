@@ -1,3 +1,10 @@
+---
+tags:
+  - tools
+  - capa/1-identidad
+  - zk
+---
+
 # Plano del KYC inspirado en zkMe
 
 [[zkME|zkMe]] es un **KYC con Zero-Knowledge** que ya funciona en otras blockchains, pero

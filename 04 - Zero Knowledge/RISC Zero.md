@@ -1,3 +1,8 @@
+---
+tags:
+  - zk
+---
+
 # RISC Zero
 
 Una **zkVM**: un entorno de ejecución donde corres un programa (en Rust) sobre grandes

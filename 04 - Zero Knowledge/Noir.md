@@ -1,3 +1,8 @@
+---
+tags:
+  - zk
+---
+
 # Noir
 
 Lenguaje tipo **Rust** para escribir circuitos ZK, creado por Aztec. Genera pruebas

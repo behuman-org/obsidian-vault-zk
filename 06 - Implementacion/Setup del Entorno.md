@@ -1,3 +1,9 @@
+---
+tags:
+  - implementacion
+  - estado/implementado
+---
+
 # Setup del Entorno
 
 Herramientas necesarias para construir el proyecto. Esta vault es sólo docs; el código

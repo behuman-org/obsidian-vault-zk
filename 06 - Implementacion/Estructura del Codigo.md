@@ -1,3 +1,9 @@
+---
+tags:
+  - implementacion
+  - estado/implementado
+---
+
 # Estructura del Código
 
 Esta vault es **documentación**. El código de producción (circuitos, contrato, cliente)

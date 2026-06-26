@@ -1,3 +1,10 @@
+---
+tags:
+  - funding
+  - capa/3-funding
+  - zk
+---
+
 # 02 — DeFindex (Yield en Blend)
 
 Rol en beHuman: **dónde vive el dinero recaudado y cómo genera rendimiento** mientras la

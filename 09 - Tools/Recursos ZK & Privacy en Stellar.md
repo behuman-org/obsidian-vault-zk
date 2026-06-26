@@ -1,3 +1,10 @@
+---
+tags:
+  - tools
+  - anonimato
+  - zk
+---
+
 # Recursos ZK & Privacy en Stellar
 
 Catálogo **maestro** de los recursos oficiales para construir ZK y privacidad en Stellar

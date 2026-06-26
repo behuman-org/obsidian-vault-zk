@@ -1,3 +1,9 @@
+---
+tags:
+  - concepto
+  - capa/2-plataforma
+---
+
 # Curaduría y Agentes Validadores
 
 La capa que mantiene la **calidad y veracidad** del contenido de la

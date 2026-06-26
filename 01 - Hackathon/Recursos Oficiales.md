@@ -1,3 +1,8 @@
+---
+tags:
+  - hackathon
+---
+
 # Recursos Oficiales
 
 Enlaces de referencia provistos por la hackathon. Para notas propias e investigación

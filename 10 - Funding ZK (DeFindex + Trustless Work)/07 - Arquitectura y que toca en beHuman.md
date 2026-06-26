@@ -1,3 +1,10 @@
+---
+tags:
+  - funding
+  - capa/3-funding
+  - zk
+---
+
 # 07 — Arquitectura y qué toca en beHuman
 
 Cómo encaja esta vertical en el monorepo `beHuman` (org `ACRC-Zk`). Estructura base:

@@ -1,3 +1,11 @@
+---
+tags:
+  - funding
+  - capa/3-funding
+  - zk
+  - estado/implementado
+---
+
 # 10 — Implementación Capa 3 (ground-funding)
 
 **Rama:** `ground-funding` (exploratoria, aún no mergeada a `main`).

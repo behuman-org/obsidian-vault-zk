@@ -1,3 +1,10 @@
+---
+tags:
+  - implementacion
+  - capa/2-plataforma
+  - estado/implementado
+---
+
 # Capa 2 — Plataforma de Opinión (implementación y uso)
 
 Cómo está construida y cómo se usa la **CAPA 2** de beHuman: la plataforma de opinión donde

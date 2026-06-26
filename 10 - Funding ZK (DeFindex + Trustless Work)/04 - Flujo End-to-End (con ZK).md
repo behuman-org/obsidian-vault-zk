@@ -1,3 +1,10 @@
+---
+tags:
+  - funding
+  - capa/3-funding
+  - zk
+---
+
 # 04 — Flujo End-to-End (con ZK)
 
 El recorrido completo, de punta a punta, manteniendo **identidad anónima** en todo momento.

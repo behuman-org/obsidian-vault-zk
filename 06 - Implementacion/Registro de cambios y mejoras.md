@@ -1,3 +1,9 @@
+---
+tags:
+  - implementacion
+  - estado/implementado
+---
+
 # Registro de cambios y mejoras
 
 **Rama:** `kyc-zk` en `/Users/mauricio/PROGRAMACION/beHuman`

@@ -1,3 +1,9 @@
+---
+tags:
+  - arquitectura
+  - decisiones
+---
+
 # Decisiones técnicas y trade-offs
 
 **Rama:** `kyc-zk` · Decisiones que rigen el diseño de beHuman CAPA 1.

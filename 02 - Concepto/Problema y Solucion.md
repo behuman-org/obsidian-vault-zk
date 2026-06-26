@@ -1,3 +1,8 @@
+---
+tags:
+  - concepto
+---
+
 # Problema y Solución
 
 ## El problema

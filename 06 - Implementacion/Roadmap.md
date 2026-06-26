@@ -1,3 +1,9 @@
+---
+tags:
+  - implementacion
+  - estado/implementado
+---
+
 # Roadmap
 
 Plan de ataque hasta el deadline (**29 jun, 12:00 PM PST** — ver [[Fechas Clave]]). Hoy

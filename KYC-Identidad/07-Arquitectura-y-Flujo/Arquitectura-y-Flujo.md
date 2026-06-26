@@ -1,3 +1,9 @@
+---
+tags:
+  - meta
+  - capa/1-identidad
+---
+
 # 07 — Arquitectura y Flujo End-to-End
 
 Visión completa: del navegador del usuario hasta `Verified(address)` en Soroban. Conecta esta investigación con el **diagrama existente** del proyecto (Secciones A/B/C).

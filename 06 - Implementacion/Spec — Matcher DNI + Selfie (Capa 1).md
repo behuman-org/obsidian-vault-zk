@@ -1,3 +1,10 @@
+---
+tags:
+  - implementacion
+  - capa/1-identidad
+  - estado/implementado
+---
+
 # Spec — Matcher DNI + Selfie (Capa 1)
 
 > [!abstract] Para el agente

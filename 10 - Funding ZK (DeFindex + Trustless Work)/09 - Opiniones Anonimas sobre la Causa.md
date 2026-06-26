@@ -1,3 +1,12 @@
+---
+tags:
+  - funding
+  - capa/2-plataforma
+  - capa/3-funding
+  - anonimato
+  - zk
+---
+
 # 09 — Opiniones Anónimas sobre la Causa
 
 Suma a cada campaña de funding una **capa de opinión**: una persona **verificada con KYC-ZK**

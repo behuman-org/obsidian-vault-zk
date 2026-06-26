@@ -1,3 +1,11 @@
+---
+tags:
+  - tools
+  - capa/1-identidad
+  - zk
+  - soroban
+---
+
 # Verificadores ZK de referencia
 
 Lo más parecido a **starter code** para nuestro proyecto: contratos verificadores

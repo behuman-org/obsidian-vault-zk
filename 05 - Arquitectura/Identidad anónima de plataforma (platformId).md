@@ -1,3 +1,10 @@
+---
+tags:
+  - arquitectura
+  - capa/2-plataforma
+  - anonimato
+---
+
 # Identidad anónima de plataforma (platformId)
 
 El corazón ZK de la [[Plataforma de Opinión Verificada|Capa 2]]: cómo una persona participa

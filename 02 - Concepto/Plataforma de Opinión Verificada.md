@@ -1,3 +1,9 @@
+---
+tags:
+  - concepto
+  - capa/2-plataforma
+---
+
 # Plataforma de Opinión Verificada
 
 La **aplicación** que construimos sobre el núcleo de identidad. Desarrolla la Capa 2 de

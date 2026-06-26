@@ -1,3 +1,10 @@
+---
+tags:
+  - meta
+  - capa/1-identidad
+  - estado/implementado
+---
+
 # 08 — Roadmap de Implementación
 
 Objetivo: KYC **real** (no mock) lo antes posible, con piezas intercambiables. Cada fase deja algo funcionando de punta a punta.

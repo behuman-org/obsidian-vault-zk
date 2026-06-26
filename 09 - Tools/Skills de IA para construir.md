@@ -1,3 +1,8 @@
+---
+tags:
+  - tools
+---
+
 # Skills de IA para construir
 
 Vamos a **construir el KYC-ZK con un agente de IA**. La diferencia entre un agente que

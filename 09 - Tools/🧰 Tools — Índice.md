@@ -1,3 +1,8 @@
+---
+tags:
+  - tools
+---
+
 # 🧰 Tools — Índice
 
 Mapa de **todas las herramientas, recursos y skills** para construir el primer producto:

@@ -1,3 +1,9 @@
+---
+tags:
+  - implementacion
+  - estado/implementado
+---
+
 # Estado actual del desarrollo
 
 **Fecha:** 2026-06-26 · **Capas 1 y 2 en `main`** · **Capa 3 en `ground-funding`**

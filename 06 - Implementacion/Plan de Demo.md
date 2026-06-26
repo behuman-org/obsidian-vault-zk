@@ -1,3 +1,9 @@
+---
+tags:
+  - implementacion
+  - estado/implementado
+---
+
 # Plan de Demo
 
 El video de 2-3 min es **requisito** ([[Reglas y Requisitos]]). Tiene que mostrar el

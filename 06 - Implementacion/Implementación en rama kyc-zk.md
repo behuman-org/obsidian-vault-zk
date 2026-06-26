@@ -1,3 +1,11 @@
+---
+tags:
+  - implementacion
+  - capa/1-identidad
+  - zk
+  - estado/implementado
+---
+
 # Implementación en rama kyc-zk
 
 **Rama:** `kyc-zk` en `/Users/mauricio/PROGRAMACION/beHuman`

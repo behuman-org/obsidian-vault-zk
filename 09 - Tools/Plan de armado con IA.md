@@ -1,3 +1,8 @@
+---
+tags:
+  - tools
+---
+
 # Plan de armado con IA
 
 Receta **paso a paso** para construir el MVP del [[IDEA|KYC-ZK]] con un agente de IA,

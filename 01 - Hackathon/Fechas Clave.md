@@ -1,3 +1,8 @@
+---
+tags:
+  - hackathon
+---
+
 # Fechas Clave
 
 | Evento | Fecha |

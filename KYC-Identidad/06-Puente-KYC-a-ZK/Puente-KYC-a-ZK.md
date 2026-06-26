@@ -1,3 +1,10 @@
+---
+tags:
+  - meta
+  - capa/1-identidad
+  - zk
+---
+
 # 06 — El Puente: de KYC verificado → ZK on-chain
 
 Esta es la pieza que **conecta** la investigación de KYC con el diagrama ZK que ya tenemos. Es donde "verifiqué una persona real" se transforma en "puedo probarlo sin revelar quién".

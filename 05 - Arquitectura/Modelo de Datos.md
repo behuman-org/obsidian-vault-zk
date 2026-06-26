@@ -1,3 +1,8 @@
+---
+tags:
+  - arquitectura
+---
+
 # Modelo de Datos
 
 Estructuras de datos que viven en cada capa: la credencial off-chain y el estado on-chain.

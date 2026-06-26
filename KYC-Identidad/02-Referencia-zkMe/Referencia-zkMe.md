@@ -1,3 +1,10 @@
+---
+tags:
+  - meta
+  - capa/1-identidad
+  - zk
+---
+
 # 02 — Referencia: cómo funciona zkMe (y qué emulamos)
 
 Fuente del modelo: **[zk.me](https://www.zk.me/)** / [blog técnico](https://blog.zk.me/how-zkkyc-works-understanding-the-mechanisms-behind-privacy-preserving-verification/).

@@ -1,3 +1,9 @@
+---
+tags:
+  - arquitectura
+  - capa/1-identidad
+---
+
  # Flujo de KYC
 
 El recorrido completo, paso a paso, desde que el usuario verifica su identidad hasta que

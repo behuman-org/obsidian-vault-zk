@@ -1,3 +1,10 @@
+---
+tags:
+  - funding
+  - capa/3-funding
+  - zk
+---
+
 # 08 — Roadmap y Preguntas Abiertas
 
 ## Roadmap (fases para implementar después)

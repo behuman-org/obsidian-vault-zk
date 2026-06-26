@@ -1,3 +1,8 @@
+---
+tags:
+  - concepto
+---
+
 # Casos de Uso
 
 Escenarios donde un KYC con ZK sobre Stellar aporta valor real. Útil para el pitch y el

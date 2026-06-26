@@ -1,3 +1,8 @@
+---
+tags:
+  - arquitectura
+---
+
 # Arquitectura General
 
 Vista de pájaro de todos los componentes y cómo se conectan. Los flujos detallados están

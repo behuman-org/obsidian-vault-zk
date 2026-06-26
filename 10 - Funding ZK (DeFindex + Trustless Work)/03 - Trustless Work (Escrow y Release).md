@@ -1,3 +1,10 @@
+---
+tags:
+  - funding
+  - capa/3-funding
+  - zk
+---
+
 # 03 — Trustless Work (Escrow y Release)
 
 Rol en beHuman: **gobierna cuándo y si** el dinero sale hacia la causa. Es la capa de

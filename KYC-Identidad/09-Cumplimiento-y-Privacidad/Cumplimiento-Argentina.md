@@ -1,3 +1,10 @@
+---
+tags:
+  - meta
+  - capa/1-identidad
+  - anonimato
+---
+
 # 09 — Cumplimiento y Privacidad (Argentina)
 
 > [!warning] No es asesoría legal

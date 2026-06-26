@@ -1,3 +1,9 @@
+---
+tags:
+  - meta
+  - capa/1-identidad
+---
+
 # 01 — Visión y Alcance
 
 ## El problema a resolver

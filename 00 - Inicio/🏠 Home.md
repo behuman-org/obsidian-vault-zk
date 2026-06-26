@@ -1,3 +1,8 @@
+---
+tags:
+  - moc
+---
+
 # 🏠 Home · KYC-ZK sobre Stellar
 
 Mapa de contenidos (MOC) de la vault. Punto de entrada para todo el proyecto.
@@ -15,6 +20,7 @@ Mapa de contenidos (MOC) de la vault. Punto de entrada para todo el proyecto.
 - [[Plataforma de Opinión Verificada]] — la aplicación con impacto social
 - [[Arquitectura General]] — cómo encaja todo
 - [[Flujo de KYC]] — el recorrido del usuario paso a paso
+- [[Tags — Taxonomía]] — cómo está etiquetada la vault (navegar por capa/tema/estado)
 
 ## 🗂️ Secciones
 

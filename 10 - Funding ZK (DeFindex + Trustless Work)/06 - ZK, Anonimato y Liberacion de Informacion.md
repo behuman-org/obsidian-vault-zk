@@ -1,3 +1,11 @@
+---
+tags:
+  - funding
+  - capa/3-funding
+  - anonimato
+  - zk
+---
+
 # 06 — ZK, Anonimato y Liberación de Información
 
 El **corazón** de toda la integración: mover dinero hacia causas **sin revelar identidades**,

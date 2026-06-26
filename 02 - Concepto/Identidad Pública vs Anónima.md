@@ -1,3 +1,9 @@
+---
+tags:
+  - concepto
+  - anonimato
+---
+
 # Identidad Pública vs Anónima
 
 Cómo conviven el **anonimato** (que da la capa ZK) y la **responsabilidad** (que necesita

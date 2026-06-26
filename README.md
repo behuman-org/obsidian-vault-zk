@@ -1,3 +1,8 @@
+---
+tags:
+  - meta
+---
+
 # Vault ZK · KYC sobre Stellar
 
 Esta es una **vault de Obsidian** que funciona como el cerebro del proyecto: aquí vive

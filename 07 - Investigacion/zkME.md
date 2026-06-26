@@ -1,3 +1,9 @@
+---
+tags:
+  - investigacion
+  - zk
+---
+
 # zkMe
 
 > KYC con **Zero-Knowledge** que ya funciona en otras blockchains, pero **no está

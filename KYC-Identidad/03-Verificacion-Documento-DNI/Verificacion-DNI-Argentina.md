@@ -1,3 +1,9 @@
+---
+tags:
+  - meta
+  - capa/1-identidad
+---
+
 # 03 — Verificación de Documento: DNI Argentino
 
 Objetivo de esta etapa (V1): confirmar que el documento es un **DNI argentino legítimo** y que sus datos **existen y coinciden** con el registro oficial.

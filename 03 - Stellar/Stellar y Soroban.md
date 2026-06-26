@@ -1,3 +1,9 @@
+---
+tags:
+  - stellar
+  - soroban
+---
+
 # Stellar y Soroban
 
 ## Stellar en una cápsula

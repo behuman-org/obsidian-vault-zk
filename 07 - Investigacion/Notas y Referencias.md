@@ -1,3 +1,8 @@
+---
+tags:
+  - investigacion
+---
+
 # Notas y Referencias
 
 Cajón de notas sueltas, dudas y enlaces para investigar. Mover lo que madure a su nota

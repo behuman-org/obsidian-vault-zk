@@ -1,3 +1,9 @@
+---
+tags:
+  - tools
+  - anonimato
+---
+
 # Stack de Privacidad en Stellar
 
 El mapa conceptual de **qué piezas de privacidad** ofrece Stellar hoy y **cuáles usamos**

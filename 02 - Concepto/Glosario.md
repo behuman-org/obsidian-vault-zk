@@ -1,3 +1,8 @@
+---
+tags:
+  - concepto
+---
+
 # Glosario
 
 Términos clave del proyecto. Enlazados desde el resto de notas.

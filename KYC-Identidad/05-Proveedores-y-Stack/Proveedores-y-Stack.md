@@ -1,3 +1,9 @@
+---
+tags:
+  - meta
+  - capa/1-identidad
+---
+
 # 05 — Proveedores y Stack (Build vs Buy)
 
 Regla: **no reinventar liveness ni el canal a RENAPER.** Reinventamos solo la **capa ZK** (que es nuestro diferencial). El KYC se apoya en infraestructura real probada.

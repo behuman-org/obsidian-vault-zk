@@ -1,3 +1,9 @@
+---
+tags:
+  - stellar
+  - zk
+---
+
 # Primitivas ZK en Stellar
 
 Stellar pasó las últimas releases de protocolo construyendo la base criptográfica que los

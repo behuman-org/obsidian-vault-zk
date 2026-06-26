@@ -1,3 +1,8 @@
+---
+tags:
+  - zk
+---
+
 # Fundamentos ZK
 
 Base conceptual mínima para entender el resto del proyecto. Términos definidos en

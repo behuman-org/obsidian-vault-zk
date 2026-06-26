@@ -1,3 +1,9 @@
+---
+tags:
+  - meta
+  - capa/1-identidad
+---
+
 # 04 — Biometría: Face Match + Liveness
 
 Objetivo de esta etapa (V2): confirmar que **hay una persona viva** frente a la cámara y que **es la misma** que la del documento/registro.

@@ -1,3 +1,8 @@
+---
+tags:
+  - concepto
+---
+
 # Visión General
 
 ## Qué construimos

@@ -1,3 +1,8 @@
+---
+tags:
+  - zk
+---
+
 # Comparativa de Herramientas ZK
 
 Tres caminos probados para ZK en Stellar. Aquí decidimos cuál usar para el MVP.

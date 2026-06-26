@@ -1,3 +1,8 @@
+---
+tags:
+  - moc
+---
+
 # 💡 IDEA — Identidad verificada + voz pública sin riesgo
 
 > **En una frase:** construir el **primer KYC con ZK sobre Stellar** que permite a cada

@@ -1,3 +1,10 @@
+---
+tags:
+  - arquitectura
+  - capa/1-identidad
+  - zk
+---
+
 # Diseño del Circuito ZK
 
 El detalle criptográfico de **qué** prueba el circuito. Conceptos base en

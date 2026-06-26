@@ -1,3 +1,10 @@
+---
+tags:
+  - stellar
+  - capa/1-identidad
+  - soroban
+---
+
 El corazón on-chain del proyecto: un contrato Soroban que **verifica la prueba ZK** y
 mantiene el **registro de addresses con KYC válido**.
 

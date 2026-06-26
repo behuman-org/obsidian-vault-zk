@@ -1,3 +1,8 @@
+---
+tags:
+  - zk
+---
+
 # Circom
 
 DSL de **bajo nivel** para escribir circuitos ZK basados en *constraints*. Genera pruebas

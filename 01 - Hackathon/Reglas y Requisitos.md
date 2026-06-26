@@ -1,3 +1,8 @@
+---
+tags:
+  - hackathon
+---
+
 # Reglas y Requisitos — Stellar Hacks: Real-World ZK
 
 ## Tema

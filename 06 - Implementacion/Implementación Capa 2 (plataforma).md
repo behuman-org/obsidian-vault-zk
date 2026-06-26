@@ -1,3 +1,10 @@
+---
+tags:
+  - implementacion
+  - capa/2-plataforma
+  - estado/implementado
+---
+
 # Implementación Capa 2 (plataforma)
 
 **Estado:** mergeada a `main` (PR #2, rama `capa2-dev`). Primera iteración funcionando en testnet.

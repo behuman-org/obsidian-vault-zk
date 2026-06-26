@@ -1,3 +1,9 @@
+---
+tags:
+  - arquitectura
+  - capa/1-identidad
+---
+
 # Matcher de Identidad (Gate de Capa 1)
 
 Dónde encaja el **matcher de cara** dentro de la arquitectura: es el paso que convierte el
