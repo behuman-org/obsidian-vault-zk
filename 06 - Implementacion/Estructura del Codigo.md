@@ -32,11 +32,16 @@ beHuman/
 │   ├── circuits/             #   Circom — post.circom (membership + platformId + contentHash)
 │   ├── contracts/            #   Soroban — opinion_board (ancla: platformId + contentHash)
 │   ├── api/                  #   Backend: feed, perfil/username, contenido off-chain (TS)
-│   └── curation/             #   Agentes validadores (IA) + moderación (TS) — futuro
+│   └── curation/             #   Agentes validadores (IA, Claude) + cola de moderación (TS)
+│
+├── funding/                  # ── CAPA 3 · Funding ZK (rama ground-funding) ──
+│   ├── circuits/             #   Circom — funding_opinion (scope/nullifier por campaña)
+│   ├── contracts/            #   Soroban — campaign_controller (no-custodial: release 2-de-3 / refund)
+│   └── api/                  #   Backend: campañas, donar, yield, hitos, opiniones (TS)
 │
 ├── packages/
-│   ├── sdk/                  #   Prover + tx Stellar (generateProof · buildVerifyTx · anchorPost)
-│   └── shared/               #   Tipos TS compartidos (VerifiedAddress · Post · CurationVerdict)
+│   ├── sdk/                  #   Prover + tx Stellar + defindex/trustlesswork + fundingOpinion
+│   └── shared/               #   Tipos TS (VerifiedAddress · Post · CurationVerdict · Campaign · Donation…)
 │
 ├── web/                      # Frontend React + Vite + TS (único)
 │   └── src/                  #   kyc/ (Capa 1) + platform/ (Capa 2)
@@ -44,8 +49,9 @@ beHuman/
 └── docs/                     # enlaza a esta vault
 ```
 
-> Ambos contratos Rust son miembros del **workspace Cargo raíz** (`/Cargo.toml`):
-> `stellar contract build` compila las dos capas. Las **skills de IA** (`stellar-dev`,
+> Los contratos Rust (`kyc_verifier`, `opinion_board`, `campaign_controller`) son miembros
+> del **workspace Cargo raíz** (`/Cargo.toml`): `stellar contract build` compila las tres
+> capas. Las **skills de IA** (`stellar-dev`,
 > `openzeppelin-skills`) están en `.claude/settings.json` → [[Skills de IA para construir]].
 
 ## Mapeo docs → código

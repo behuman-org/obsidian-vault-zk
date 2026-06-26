@@ -122,6 +122,43 @@ cuenta efímera → init (si falta) → register_identity → post → feed. Cad
 
 ---
 
+## 6. Curaduría (`platform/curation`) — moderación off-chain y aditiva
+
+Implementada (PR #3 y #4). **No toca el circuito ni `opinion_board`**: opera solo sobre el
+contenido + `platformId`, nunca address ni PII. Dos niveles (como en
+[[Curaduría y Agentes Validadores]]).
+
+### Nivel 1 — Agente validador (IA)
+
+`agent.ts`: usa la API de Claude (`@anthropic-ai/sdk`), modelo configurable
+(`CURATION_MODEL`, default `claude-opus-4-8`). `reviewPost(input)` → `CurationVerdict`.
+Cliente inyectable (`AnthropicLike`) para mockear el LLM en tests.
+
+`rubric.ts` — la rúbrica del sistema (`SYSTEM_RUBRIC`):
+- Evalúa **veracidad/fuentes, coherencia, toxicidad, plagio**.
+- Decisión: `approved` | `flagged` | `escalated`.
+- **Regla de oro:** discrepar con una idea NO es motivo de moderación — solo abuso,
+  desinformación o plagio. Las opiniones subjetivas son válidas y no requieren fuentes.
+- **Fail-safe:** si el modelo no devuelve un JSON válido → `escalated` (ante la duda, humano).
+
+### Nivel 2 — Cola de moderación humana
+
+`queue.ts`: `escalateToModeration`, `getModerationQueue`, `resolveModeration`. Store JSON
+local. ⚠️ Guarda **solo** contenido + `platformId`/handle + motivo. **Nunca address ni PII.**
+
+### Integración en el backend (`platform/api`)
+
+- Al hacer `POST /content`, se llama a `reviewPost` y se guarda el veredicto en el post.
+- Si el curador no está disponible → fail-safe `escalated` (revisión humana).
+- Los `escalated` **no se publican** en el feed; los `approved` y `flagged` sí.
+- Endpoints nuevos: `GET /moderation/queue`, `POST /moderation/resolve`.
+- Frontend: `web/src/platform/Moderation.tsx` (vista de la cola).
+
+**Tipos** (`packages/shared`): `CurationStatus`, `CurationVerdict { status, reason }`,
+`CurationInput { platformId, handle, content }`.
+
+---
+
 ## Invariantes ZK que se respetaron
 
 1. ✅ El address del KYC **nunca** se usa ni se revela en la plataforma.
@@ -151,10 +188,12 @@ npm run dev -w @behuman/web        # :5173
 
 ## Pendiente / próximos pasos
 
-- **Curaduría** (`platform/curation`) — agentes validadores + moderación. Aún no implementada.
 - **Username único** (hoy es libre, sin unicidad).
 - **Mitigar correlación por timing** (KYC y aparición en plataforma).
 - **Relayer** en producción (en vez de cuenta efímera friendbot, que es de testnet).
+- **Curaduría on-chain (opcional):** hoy los veredictos son off-chain; a futuro se podría
+  anclar el hash del veredicto.
+- **Calibrar la rúbrica** del curador con casos reales (es la decisión de producto más fina).
 
 ---
 

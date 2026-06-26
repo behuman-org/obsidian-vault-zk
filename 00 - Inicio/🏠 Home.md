@@ -76,6 +76,11 @@ Mapa de contenidos (MOC) de la vault. Punto de entrada para todo el proyecto.
 - [[Plano del KYC inspirado en zkMe]]
 - [[Plan de armado con IA]]
 
+### 10 · Funding ZK 💸 (Capa 3 — DeFindex + Trustless Work)
+- [[10 - Funding ZK (DeFindex + Trustless Work)/README|Funding ZK — Índice]]
+- [[10 - Implementación Capa 3 (ground-funding)]] — lo construido (rama exploratoria)
+- [[04 - Flujo End-to-End (con ZK)]] · [[09 - Opiniones Anonimas sobre la Causa]]
+
 ---
 
 ## 📌 Estado actual
@@ -93,7 +98,12 @@ Mapa de contenidos (MOC) de la vault. Punto de entrada para todo el proyecto.
   - [x] Circuito de plataforma + contrato `opinion_board` (tests)
   - [x] Perfil/username + handle + feed (off-chain)
   - [x] Primer post (opinión comida argentina) anclado on-chain con cuenta efímera
-  - [ ] Curaduría (`platform/curation`) → [[Curaduría y Agentes Validadores]]
+  - [x] Curaduría (`platform/curation`): agente IA + cola humana → [[Curaduría y Agentes Validadores]]
+- [x] **CAPA 3 (funding ZK) — rama `ground-funding`** → [[10 - Implementación Capa 3 (ground-funding)]]
+  - [x] Circuito `funding_opinion` (scope/nullifier por campaña)
+  - [x] Contrato `campaign_controller` no-custodial (release 2-de-3 / refund todo-o-nada, 14 tests)
+  - [x] Backend + SDK (DeFindex/Trustless Work) + Web; auditoría red/blue team (11 hallazgos)
+  - [ ] Integración real testnet (keys + Manager del vault Blend) · merge a `main`
 - [ ] Demo end-to-end + video (3 min)
 
 ## ❓ Decisiones abiertas

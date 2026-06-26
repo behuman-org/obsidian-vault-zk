@@ -1,6 +1,6 @@
 # Estado actual del desarrollo
 
-**Rama:** `kyc-zk` · **Fecha:** 2026-06-25
+**Fecha:** 2026-06-26 · **Capas 1 y 2 en `main`** · **Capa 3 en `ground-funding`**
 
 Snapshot del proyecto: qué está hecho, qué está en progreso, qué falta.
 
@@ -47,6 +47,30 @@ Mergeada a `main` (PR #2). ZK como núcleo. Detalle en [[Implementación Capa 2 
 | **Frontend** (`web/src/platform`: identidad anónima + post + feed) | ✅ |
 | **Identidad anónima** (`platformId`, cuenta efímera para fee) | ✅ |
 | **Primer post** (opinión comida argentina, anclado on-chain) | ✅ en testnet |
+| **Curaduría** (agente IA + rúbrica + cola humana) | ✅ off-chain, aditiva |
+
+### Curaduría — detalle (PR #3 y #4)
+
+- **Nivel 1 (IA):** `platform/curation/agent.ts` + `rubric.ts` → `approved`/`flagged`/`escalated`.
+- **Nivel 2 (humano):** `queue.ts` + endpoints `/moderation/*` + `web/.../Moderation.tsx`.
+- Solo ve contenido + `platformId`; cero address/PII. Fail-safe: ante error → escalar.
+- → [[Curaduría y Agentes Validadores]], [[Implementación Capa 2 (plataforma)]].
+
+### CAPA 3 — Funding ZK (rama `ground-funding`, exploratoria) ✅
+
+Crowdfunding anónimo y condicional. Detalle en [[10 - Implementación Capa 3 (ground-funding)]].
+
+| Componente | Status |
+|---|---|
+| **Circuito `funding_opinion`** (scope/nullifier por campaña, ~3.7k constraints) | ✅ prueba/verifica |
+| **Contrato `campaign_controller`** (release 2-de-3 + meta, refund todo-o-nada) | ✅ 14 tests |
+| **Backend `funding/api`** (campañas, donar, yield, hitos, opiniones) | ✅ e2e dev |
+| **SDK** (defindex, trustlesswork, fundingOpinion) + **Web** (`web/src/funding`) | ✅ dev |
+| **Auditoría red/blue team** | ✅ 11 hallazgos remediados |
+| Integración real DeFindex/Trustless Work (keys + Manager del vault) | ⏳ pendiente testnet |
+
+> Donación = wallet efímera; opinión = `platformId` por campaña + nullifier (1 voz/humano).
+> Cero PII on-chain. Issuer Capa 1 sigue mock (exploratoria).
 
 ---
 
@@ -57,17 +81,13 @@ Mergeada a `main` (PR #2). ZK como núcleo. Detalle en [[Implementación Capa 2 
 `web/src/kyc/credentialStore.ts` — permite reanudar registro sin re-enrolar (ya usado por
 la Capa 2 para cargar la credencial). Pulir UI de "credencial guardada".
 
-### Curaduría (Capa 2)
-
-- **Estado:** scaffolding en `platform/curation/` (no implementado).
-- Agentes validadores (IA) + cola de moderación humana → [[Curaduría y Agentes Validadores]].
-- **Anti-Sybil resistente a evasión:** moderar por `platformId` (determinístico por humano).
-
-### Mejoras de la Capa 2
+### Mejoras pendientes
 
 - [ ] Username único (hoy libre).
 - [ ] Mitigar correlación por timing (KYC ↔ aparición en plataforma).
 - [ ] Relayer en producción (en vez de cuenta efímera friendbot).
+- [ ] Calibrar la rúbrica del curador con casos reales.
+- [ ] Gobernanza de moderadores + apelaciones.
 
 ---
 

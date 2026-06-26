@@ -226,6 +226,47 @@ liviano por post).
 
 ---
 
+## Decisiones de la CAPA 3 (funding ZK)
+
+### 13. Donante = wallet efímera (no el address del KYC)
+
+**Decisión:** cada donación se firma con una wallet efímera aleatoria.
+
+**Razón:** una donación atada al address del KYC revelaría quién financia qué causa. La
+wallet efímera rompe ese link.
+
+**Trade-off:** UX de fondear la efímera; en testnet friendbot, en prod relayer.
+
+### 14. `scope`/`nullScope` como inputs públicos en runtime (por campaña)
+
+**Decisión:** el circuito de funding recibe `scope` y `nullScope` derivados de `campaignId`.
+
+**Razón:** identidad **incorrelacionable entre campañas** (`platformId` distinto por campaña)
+y **1 humano = 1 voz por campaña** (`nullifier` scopeado). En Capa 2 el scope era fijo.
+
+**Trade-off:** el backend debe re-derivar y validar scope/nullScope/contentHash (binding).
+
+### 15. Custodia no-custodial con release 2-de-3 + refund todo-o-nada
+
+**Decisión:** el `campaign_controller` no tiene retiro discrecional: solo `release` (2-de-3
+firmas + meta) o `refund` (deadline sin meta).
+
+**Razón:** nadie —ni la plataforma— puede llevarse los fondos. Confianza mínima.
+
+**Trade-off:** rigidez (no hay liberación parcial discrecional); hitos/disputas viven en
+Trustless Work off-chain del contrato.
+
+### 16. Binding de `contentHash` por IC público (sin restricción muerta)
+
+**Decisión:** `contentHash` se liga vía el vector IC de Groth16 (input público), no por una
+restricción interna.
+
+**Razón (RT-10 de la auditoría):** una `contentHashSq <== contentHash*contentHash` cuya
+salida no se compara con nada es una **restricción muerta** — da falsa seguridad. Como
+`contentHash` es público, alterarlo ya invalida la prueba.
+
+---
+
 ## Matriz de decisiones
 
 | Decisión | MVP | Producción | Crítica | Auditar |
@@ -242,6 +283,9 @@ liviano por post).
 | Gate por issuerRoot (Capa 2) | ✅ | ✅ | 🔴 SÍ | 🔴 SÍ |
 | Cuenta efímera p/ fee | ✅ | ❌ (relayer) | 🟡 | 🟢 NO |
 | contentHash en la prueba | ✅ | ✅ | 🟡 | 🟢 NO |
+| Wallet efímera donante (Capa 3) | ✅ | ❌ (relayer) | 🟡 | 🟢 NO |
+| scope/nullScope runtime (Capa 3) | ✅ | ✅ | 🔴 SÍ | 🔴 SÍ |
+| Release 2-de-3 + refund (Capa 3) | ✅ | ✅ | 🔴 SÍ | 🔴 SÍ |
 
 **Crítica:** decisión que afecta seguridad criptográfica.
 **Auditar:** decisión que requiere revisión por expertos.

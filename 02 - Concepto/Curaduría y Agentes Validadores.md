@@ -48,12 +48,30 @@ comportamiento de una persona es público y persistente, es más fácil distingu
 intervención **nace desde el odio** o de alguien que **realmente quiere aportar** — y eso
 alimenta el criterio de la curaduría.
 
+## Implementación (en `main`, `platform/curation`)
+
+Ya está construida (PR #3 y #4), **off-chain y aditiva** (no toca el circuito ni el contrato).
+Detalle técnico en [[Implementación Capa 2 (plataforma)#6. Curaduría (`platform/curation`) — moderación off-chain y aditiva]].
+
+- **Nivel 1 — agente IA:** usa la API de Claude (`@anthropic-ai/sdk`, modelo configurable).
+  Rúbrica: veracidad/fuentes, coherencia, toxicidad, plagio → `approved` / `flagged` / `escalated`.
+- **Nivel 2 — cola humana:** los `escalated` van a una cola de moderación (`queue.ts`); el feed
+  publica `approved` + `flagged` y oculta los `escalated` hasta revisión humana.
+- **Regla de oro (codificada):** discrepar con una idea NO se modera; solo abuso/desinfo/plagio.
+- **Fail-safe:** si el modelo falla → se escala (ante la duda, humano).
+- **Anonimato preservado:** la curaduría ve **solo contenido + `platformId`** (seudónimo),
+  nunca address ni PII. Como `platformId` es determinístico por humano, un baneo es
+  **resistente a evasión** sin deanonimizar → [[Identidad anónima de plataforma (platformId)#Anti-Sybil resistente a evasión]].
+
 ## Preguntas abiertas
 
-- [ ] ¿Qué evalúa exactamente un agente? (veracidad, fuentes, toxicidad, plagio…)
-- [ ] ¿Dónde está el límite preciso entre lo que resuelve el agente y lo que va a moderación?
-- [ ] ¿Cómo se eligen y gobiernan los moderadores? (¿son personas verificadas? ¿reputación?)
-- [ ] ¿La curaduría es on-chain, off-chain, o híbrida? (los agentes corren off-chain)
+- [x] ¿Qué evalúa el agente? → veracidad/fuentes, coherencia, toxicidad, plagio (rúbrica en `rubric.ts`).
+- [x] ¿Límite agente ↔ humano? → casos ambiguos/sensibles se **escalan** (fail-safe a humano).
+- [x] ¿On-chain / off-chain? → **off-chain** (veredictos off-chain; anclar el hash = futuro).
+- [ ] ¿Cómo se eligen y gobiernan los moderadores? (¿personas verificadas? ¿reputación?)
 - [ ] ¿Hay apelación de una decisión de moderación?
+- [ ] Calibrar la rúbrica con casos reales (decisión de producto fina).
 
-Relacionado: [[IDEA]] · [[Plataforma de Opinión Verificada]] · [[Identidad Pública vs Anónima]] · [[Prueba de Persona Única]]
+Relacionado: [[IDEA]] · [[Plataforma de Opinión Verificada]] · [[Identidad Pública vs Anónima]] ·
+[[Prueba de Persona Única]] · [[Identidad anónima de plataforma (platformId)]] ·
+[[Implementación Capa 2 (plataforma)]]
