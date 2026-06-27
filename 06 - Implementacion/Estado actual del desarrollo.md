@@ -6,7 +6,7 @@ tags:
 
 # Estado actual del desarrollo
 
-**Fecha:** 2026-06-26 · **Capas 1 y 2 en `main`** · **Capa 3 en `ground-funding`**
+**Fecha:** 2026-06-27 · **Las 3 capas en `main`** (Capa 3 mergeada desde `ground-funding` y pusheada a `origin/main`).
 
 Snapshot del proyecto: qué está hecho, qué está en progreso, qué falta.
 
@@ -22,6 +22,8 @@ Snapshot del proyecto: qué está hecho, qué está en progreso, qué falta.
 | **Contrato (kyc_verifier)** | ✅ Completo | ✅ 9 test cases | ✅ En testnet |
 | **Matcher (face-api)** | ✅ Funcional | ✅ Fixtures + tests | ✅ Servidor Express 8787 |
 | **De-dup anti-Sybil** | ✅ Cableado | ✅ Validación | ✅ En gate |
+| **Cotejo anti-fraude (datos↔DNI, rebote del DNI)** | ✅ Nuevo | ✅ 7 tests | ✅ matcher `/verify-data` + enforce en `/enroll` |
+| **Corte temprano si la wallet ya tiene identidad** | ✅ Nuevo | — | ✅ `is_verified` al conectar (no deja re-validar) |
 | **SDK (generateProof, verifyAndRegister)** | ✅ Completo | ✅ Tipos + encoding | ✅ En web + e2e |
 | **Frontend (KycFlow)** | ✅ Flujo full | ✅ Estados claros | ✅ En navegador |
 | **Registro on-chain desde web** | ✅ Funciona | ✅ Stellar Wallets Kit | ✅ En testnet |
@@ -62,21 +64,25 @@ Mergeada a `main` (PR #2). ZK como núcleo. Detalle en [[Implementación Capa 2 
 - Solo ve contenido + `platformId`; cero address/PII. Fail-safe: ante error → escalar.
 - → [[Curaduría y Agentes Validadores]], [[Implementación Capa 2 (plataforma)]].
 
-### CAPA 3 — Funding ZK (rama `ground-funding`, exploratoria) ✅
+### CAPA 3 — Funding ZK (en `main`) ✅
 
 Crowdfunding anónimo y condicional. Detalle en [[10 - Implementación Capa 3 (ground-funding)]].
 
 | Componente | Status |
 |---|---|
 | **Circuito `funding_opinion`** (scope/nullifier por campaña, ~3.7k constraints) | ✅ prueba/verifica |
-| **Contrato `campaign_controller`** (release 2-de-3 + meta, refund todo-o-nada) | ✅ 14 tests |
+| **Contrato `campaign_controller`** (release 2-de-3 + meta, refund todo-o-nada) | ✅ 14 tests · **desplegado en testnet** (init OK) |
 | **Backend `funding/api`** (campañas, donar, yield, hitos, opiniones) | ✅ e2e dev |
-| **SDK** (defindex, trustlesswork, fundingOpinion) + **Web** (`web/src/funding`) | ✅ dev |
+| **SDK** (defindex, trustlesswork, fundingOpinion, fundingAuth) + **Web** (`web/src/funding`) | ✅ dev |
 | **Auditoría red/blue team** | ✅ 11 hallazgos remediados |
-| Integración real DeFindex/Trustless Work (keys + Manager del vault) | ⏳ pendiente testnet |
+| **Integración real DeFindex** (depósito XLM en vault Blend) | ✅ **validada on-chain** (testnet, depósito real) |
+| **Integración real Trustless Work** (escrow single-release) | ✅ **validada on-chain** (testnet, escrow desplegado) |
+| Manager del vault = controller (cross-contract) + firma por rol on-chain + disputas | ⏳ pendiente |
 
 > Donación = wallet efímera; opinión = `platformId` por campaña + nullifier (1 voz/humano).
-> Cero PII on-chain. Issuer Capa 1 sigue mock (exploratoria).
+> Cero PII on-chain. Issuer Capa 1 sigue **mock** (declarado). Direcciones de testnet y APIs
+> reales (DeFindex Bearer; Trustless Work host dev + `x-api-key`) en
+> [[10 - Implementación Capa 3 (ground-funding)]].
 
 ---
 

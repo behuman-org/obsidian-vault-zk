@@ -100,6 +100,19 @@ flowchart LR
 - **Issuer root (paso 3):** sólo se aceptan credenciales de issuers de confianza.
 - La **PII nunca sale del cliente** salvo hacia el issuer en la Fase 1.
 
+### Anti-fraude del documento y corte temprano (mejoras 2026-06-27)
+
+- **Cotejo datos↔DNI (Fase 1, anti-fraude):** además de validar que la imagen *sea* un DNI
+  (cara + texto OCR), el matcher **extrae por OCR** el nº de documento y el año de nacimiento
+  y los **coteja contra los datos declarados** por la persona. Si no coinciden, el DNI se
+  **rebota** (se pide subir uno válido). El cotejo se hace en `POST /verify-data` (temprano,
+  UX) y se **enforca de forma autoritativa en `/enroll`** (no se puede evadir desde un cliente
+  manipulado). Respuesta **PII-free**: solo el nombre del campo que no coincide, nunca el valor.
+- **Corte temprano por identidad existente (Fase 0):** al conectar la wallet, el front consulta
+  `is_verified(address)`; si **ya tiene identidad**, muestra *"Esta identidad ya existe"* y **no
+  permite re-validar** (no avanza a subir DNI ni escanear cara). Es defensa en profundidad junto
+  al de-dup por documento y al nullifier on-chain.
+
 Detalle criptográfico en [[Diseño del Circuito ZK]] y [[Modelo de Datos]].
 
 ---

@@ -230,5 +230,33 @@ on-chain sin repetir la validación biométrica.
 
 ---
 
+## Fase reciente: Capa 3 + endurecimiento de Capa 1 (2026-06-27)
+
+### ✅ CAPA 3 — Funding ZK (a `main`)
+
+- Construida en `ground-funding`, **auditada (red/blue team, 11 hallazgos remediados)**,
+  **mergeada a `main`** y pusheada a `origin/main`.
+- **Validado on-chain en testnet:** contrato `campaign_controller` desplegado; **depósito real
+  en DeFindex** (vault XLM Blend) y **escrow real en Trustless Work** (single-release, host dev).
+- Detalle, direcciones e integraciones: [[10 - Implementación Capa 3 (ground-funding)]].
+
+### ✅ CAPA 1 — endurecimiento anti-fraude
+
+- **Cotejo datos↔DNI:** el matcher extrae por OCR el nº de documento y el año de nacimiento y
+  los coteja con lo declarado; si no coinciden, **rebota el DNI**. Endpoint `/verify-data`
+  (temprano) + enforce autoritativo en `/enroll`. PII-free (solo nombres de campo). +7 tests.
+- **Corte temprano:** al conectar la wallet se consulta `is_verified(address)`; si ya tiene
+  identidad, **no permite re-validar** ("Esta identidad ya existe").
+- Detalle: [[Flujo de KYC]] (sección "Anti-fraude del documento y corte temprano").
+
+### ✅ Verificación previa al push a `main`
+
+Rust: 3 contratos compilan, 31 tests (14 `campaign_controller` + 8 + 9). TS: 7 workspaces
+compilan; issuer 18 tests, sdk 5 tests. Sin errores.
+
+---
+
 Relacionado: [[Implementación en rama kyc-zk]], [[Flujo de KYC]], [[Diseño del Circuito ZK]],
-[[Contrato Verificador (Soroban)]], [[Matcher de Identidad (Gate de Capa 1)]].
+[[Contrato Verificador (Soroban)]], [[Matcher de Identidad (Gate de Capa 1)]],
+[[10 - Implementación Capa 3 (ground-funding)]], [[Estado actual del desarrollo]],
+[[endpoint-front]].

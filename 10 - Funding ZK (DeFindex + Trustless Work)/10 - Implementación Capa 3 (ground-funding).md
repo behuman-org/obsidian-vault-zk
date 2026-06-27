@@ -8,7 +8,7 @@ tags:
 
 # 10 — Implementación Capa 3 (ground-funding)
 
-**Rama:** `ground-funding` (exploratoria, aún no mergeada a `main`).
+**Rama:** desarrollada en `ground-funding`, **mergeada a `main`** y pusheada a `origin/main` (2026-06-27).
 
 Registro de cómo se construyó la **CAPA 3 — Funding ZK**: crowdfunding **anónimo y
 condicional** para causas, sobre la identidad verificada-pero-anónima de
@@ -137,10 +137,29 @@ Se corrió una auditoría con **11 hallazgos remediados** (último commit de la 
 ## Estado y pendientes
 
 - ✅ Contrato (14 tests), circuito (~3.7k constraints, prueba/verifica), API+SDK+Web (e2e dev verde).
-- ⏳ **Para testnet real:** keys de DeFindex/Trustless Work + que el Manager del vault Blend
-  sea el `campaign_controller` (cross-contract).
+- ✅ **Mergeado a `main`** y pusheado a `origin/main`.
+- ✅ **Contrato desplegado en testnet** (`init` OK, views correctas).
+- ✅ **DeFindex real validado on-chain:** depósito real de XLM en el vault Blend; `apy`/`balance`
+  vía SDK. API confirmada (Bearer + `?network`).
+- ✅ **Trustless Work real validado on-chain:** escrow single-release desplegado (host **dev** +
+  `x-api-key`). TW es escrow de **stablecoin** (USDC), no custodia las donaciones.
+- ⏳ **Pendiente:** Manager del vault = `campaign_controller` (cross-contract); orquestación de
+  firma por rol on-chain end-to-end; disputas (TW); donar on-chain desde el browser.
 - ⏳ Curaduría de opiniones requiere `ANTHROPIC_API_KEY` (sin ella → se escalan).
-- ⚠️ Issuer de Capa 1 sigue siendo **mock**; esta capa es **exploratoria** (rama `ground-funding`).
+- ⚠️ Issuer de Capa 1 sigue siendo **mock** (declarado).
+
+### Direcciones e integraciones validadas (testnet)
+
+| Recurso | Valor / nota |
+|---|---|
+| Contrato `campaign_controller` | `CB5NYUPBHDNTSN7MVJOALELTIY4BXGPTGUR6JPA7SQSZRTA46G6GIOAM` |
+| DeFindex — vault XLM (Blend; activo = XLM SAC) | `CCLV4H7WTLJQ7ATLHBBQV2WW3OINF3FOY5XZ7VPHZO7NH3D2ZS4GFSF6` |
+| DeFindex — depósito real verificado | 5 XLM (tx `ee52e10c…`) |
+| Trustless Work — escrow desplegado | `CAUIE5WKHQ2FNIIXRY2HVVEUE55SXSPNKIWAFEJPLVMS5XI35YZL2E76` |
+| Trustless Work — trustline (USDC testnet) | issuer `GBBD47IF…`, símbolo `USDC` |
+
+> Las API keys reales viven solo en `.env` (gitignored). Detalle en `docs/funding.md` y
+> `docs/funding-audit.md` del repo.
 
 ---
 
