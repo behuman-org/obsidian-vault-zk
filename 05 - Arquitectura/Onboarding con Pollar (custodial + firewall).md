@@ -8,9 +8,10 @@ tags:
 
 # Onboarding con Pollar (custodial + firewall)
 
-> Rama `pollar-onboarding`. Pollar (`@pollar/react`, embedded wallet de Stellar) se integra
-> **solo** como forma amigable de que un usuario sin wallet cree una cuenta con **email**.
-> **No firma nada** de beHuman ni participa del anonimato. Doc del repo: `docs/pollar-onboarding.md`.
+> **Mergeado a `main`** (rama `pollar-onboarding`). Pollar (`@pollar/react`, embedded wallet de
+> Stellar) se integra **solo** como forma amigable de que un usuario sin wallet cree una cuenta
+> con **email/Google**. **No firma nada** de beHuman ni participa del anonimato.
+> Docs del repo: `docs/pollar-onboarding.md` + `docs/pollar-audit.md`.
 
 ## El problema que resuelve
 
@@ -61,6 +62,26 @@ matcher (DNI + cara) → credencial ZK client-side → listo.
 
 No se afirma "no se guarda nada en ningún lado" (Pollar guarda su parte). Copy:
 *"Tu email crea tu wallet, pero nunca se vincula a tu identidad anónima."*
+
+## Auditoría (`docs/pollar-audit.md`) — ✅ APROBADA
+
+Revisión de funcionamiento + invariantes ZK. Veredicto: **los 5 invariantes se cumplen**.
+
+- **Superficie contenida:** Pollar usa **solo** `openLoginModal` + `isAuthenticated`. **Nunca**
+  se usa `walletAddress`, `sendPayment`, `signAndSubmitTx` ni `signTx` → Pollar no firma ni
+  fondea nada. El email no se envía a `/content`, `/articles`, `/campaigns` ni `/profile`.
+- **Funciona en testnet:** login OK con la `pub_testnet_…`. El 403/CORS previo era por usar una
+  key `pat_` en vez de la publishable — resuelto. `typecheck` + `vite build` verdes.
+- **2 observaciones, ya corregidas:**
+  - **O1 ✅** — navegar al onboarding apenas hay sesión (`isAuthenticated || verified`), sin
+    esperar el provisioning de la wallet (no se necesita para el flujo anónimo).
+  - **O2 ✅** — quitado el override de `appConfig`: el modal usa la config real del dashboard.
+
+> ⚠️ **N1 — Acción de seguridad pendiente:** durante el setup se compartió una secret key
+> `sec_testnet_…` por chat. No está en el repo ni se usa en el cliente, pero **debe rotarse**.
+> En el navegador solo va la **publishable** `pub_testnet_…` (segura). N3: queda la correlación
+> por timing (Pollar conoce `email→hora`, beHuman `platformId→hora`) — sin id compartido, pero
+> es la limitación general ya documentada.
 
 Relacionado: [[Identidad Pública vs Anónima]], [[Identidad anónima de plataforma (platformId)]],
 [[Implementación en rama kyc-zk]], [[Flujo de KYC]], [[Estado actual del desarrollo]].

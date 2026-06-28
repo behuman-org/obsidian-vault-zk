@@ -55,6 +55,7 @@ Mergeada a `main` (PR #2). ZK como núcleo. Detalle en [[Implementación Capa 2 
 | **Frontend** (`web/src/platform`: identidad anónima + post + feed) | ✅ |
 | **Identidad anónima** (`platformId`, cuenta efímera para fee) | ✅ |
 | **Primer post** (opinión comida argentina, anclado on-chain) | ✅ en testnet |
+| **Artículos** (long-form markdown, anclados on-chain por ZK + opiniones) | ✅ |
 | **Curaduría** (agente IA + rúbrica + cola humana) | ✅ off-chain, aditiva |
 
 ### Curaduría — detalle (PR #3 y #4)
@@ -94,7 +95,11 @@ Pollar (email) es **custodial** y **no firma nada** de beHuman: solo crea la wal
 corre en modo "credencial" (matcher → credencial ZK client-side, **sin** on-chain). Las
 acciones anónimas siguen por `platformId` + efímeras (friendbot), nunca desde Pollar.
 Archivos: `web/src/identity/pollar.tsx`, `AuthPage`, `KycFlow mode="credential"`,
-`OnboardingPage`. Detalle en [[Onboarding con Pollar (custodial + firewall)]].
+`OnboardingPage`. **Auditoría ✅ aprobada** (5 invariantes; O1/O2 corregidas). Detalle en
+[[Onboarding con Pollar (custodial + firewall)]].
+
+> ⚠️ Pendiente de seguridad (N1): **rotar** la secret key `sec_testnet_…` que se compartió
+> por chat en el setup (no está en repo ni en el cliente, pero conviene rotarla).
 
 ---
 

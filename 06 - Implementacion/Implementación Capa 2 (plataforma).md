@@ -129,6 +129,24 @@ cuenta efímera → init (si falta) → register_identity → post → feed. Cad
 
 ---
 
+## 5b. Artículos (long-form, anclados on-chain por ZK)
+
+Además del post corto (tweet), la Capa 2 tiene **Artículos** (markdown long-form). Misma
+mecánica ZK que un post, pero el `contentHash` cubre **todo** el artículo.
+
+- **Anclaje:** `web/src/identity/article.ts` → `articleCanonical = JSON({t:title, b:banner,
+  c:content})`; se hashea y se ancla en `opinion_board` (misma tx que un tweet) bajo el
+  `platformId` anónimo. Cualquier cambio rompe el hash → **inmutable**, cero PII.
+- **Backend** (`platform/api`): `POST/GET /articles`, `GET /articles/:id`, y opiniones sobre
+  artículos `POST /articles/:id/opinions`. `ArticleItem` y `ArticleOpinion` keyed por
+  `platformId` (el listado va liviano: excerpt sin el cuerpo completo).
+- **Frontend:** `ArticlesPage`, `ArticleEditorPage`, `ArticleViewPage`.
+
+> Es la misma identidad anónima + ancla `(platformId, contentHash)`; solo cambia que el
+> contenido es largo y el hash cubre título + banner + cuerpo.
+
+---
+
 ## 6. Curaduría (`platform/curation`) — moderación off-chain y aditiva
 
 Implementada (PR #3 y #4). **No toca el circuito ni `opinion_board`**: opera solo sobre el
