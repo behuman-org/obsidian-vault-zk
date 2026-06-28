@@ -58,7 +58,7 @@ Mapa de contenidos (MOC) de la vault. Punto de entrada para todo el proyecto.
 - [[Decisiones técnicas y trade-offs]] — por qué cada decisión y sus implicancias
 - [[Matcher de Identidad (Gate de Capa 1)]] — validación DNI + cara en vivo
 - [[Identidad anónima de plataforma (platformId)]] — el ZK de la Capa 2
-- [[Onboarding con Pollar (embedded wallet)]] — wallet por email para newbies (en diseño) 🧭
+- [[Onboarding con Pollar (custodial + firewall)]] — wallet por email para newbies, sin romper el anonimato ✅
 
 ### 06 · Implementación
 - [[Setup del Entorno]]

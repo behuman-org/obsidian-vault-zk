@@ -86,21 +86,26 @@ Crowdfunding anónimo y condicional. Detalle en [[10 - Implementación Capa 3 (g
 
 ---
 
+### Onboarding con Pollar (embedded wallet) → newbies web3 ✅
+
+Implementado (rama `pollar-onboarding`, commit `a6e94fe`). Crear wallet **con email** para
+usuarios nuevos **sin perder el anonimato ZK**. Se suma a Freighter (no lo reemplaza).
+Pollar (email) es **custodial** y **no firma nada** de beHuman: solo crea la wallet. El KYC
+corre en modo "credencial" (matcher → credencial ZK client-side, **sin** on-chain). Las
+acciones anónimas siguen por `platformId` + efímeras (friendbot), nunca desde Pollar.
+Archivos: `web/src/identity/pollar.tsx`, `AuthPage`, `KycFlow mode="credential"`,
+`OnboardingPage`. Detalle en [[Onboarding con Pollar (custodial + firewall)]].
+
+---
+
 ## 🧭 En diseño (decidido, no implementado)
-
-### Onboarding con Pollar (embedded wallet) → newbies web3
-
-Crear wallet **con email** para usuarios nuevos, **sin perder el anonimato ZK**. Se suma a
-Freighter (no lo reemplaza). Pollar (email) es **custodial** → la wallet de Pollar es solo la
-identidad *pública*; el `secret`/`platformId`/efímeras nunca la tocan. KYC-ZK queda **idéntico**
-(integración aditiva al frontend). Detalle + 3 reglas innegociables en
-[[Onboarding con Pollar (embedded wallet)]].
 
 ### SDK público KYC-ZK + Docs (GitBook)
 
 Empaquetar el KYC-ZK como SDK reutilizable por terceros + docs en GitBook. Hay que curar el
 API público (Capa 1 + modo anónimo Capa 2), ocultar encoders de bajo nivel, dejar funding
-fuera, y buildear a `dist/`. Detalle en [[SDK público KYC-ZK + Docs (GitBook)]].
+fuera, y buildear a `dist/` (hoy `packages/sdk` es `private` y mezcla todo). Detalle en
+[[SDK público KYC-ZK + Docs (GitBook)]].
 
 ---
 

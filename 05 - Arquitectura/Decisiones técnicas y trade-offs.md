@@ -273,24 +273,25 @@ salida no se compara con nada es una **restricción muerta** — da falsa seguri
 
 ---
 
-## Decisiones de integraciones (en diseño)
+## Decisiones de integraciones
 
-### 17. Pollar (email wallet) solo como identidad pública, firewall-eado
+### 17. Pollar (email wallet) firewall-eado — Pollar **no firma nada**
 
-**Decisión:** usar Pollar como onboarding por email para newbies, pero **solo** como wallet
-*pública*; el `secret`/`platformId`/efímeras nunca la tocan, y la efímera nunca se fondea
-desde la wallet de Pollar.
+**Decisión (implementada):** usar Pollar como onboarding por email para newbies, pero **solo
+para crear la wallet**. Pollar **no firma** ninguna tx de beHuman; el KYC corre en modo
+"credencial" (matcher → credencial ZK client-side, sin on-chain). El `secret`/`platformId`/
+efímeras nunca tocan Pollar, y la efímera nunca se fondea desde su wallet.
 
 **Razón:** Pollar (email) es **custodial** (clave + email en su server, firma server-side).
 Si la wallet de Pollar entrara al grafo de fondeo de lo anónimo, habría rastro
-`email → opinión`. El firewall mantiene el anonimato intacto.
+`email → opinión`. Mantenerla fuera de todo firmado/fondeo deja el anonimato intacto.
 
 **Trade-off:** un tercero (Pollar) sabe "email → wallet pública"; sin recuperación sin email.
-Es aditivo (no toca circuito/contrato).
+Es aditivo (no toca circuito/contrato). Se SUMA a Freighter, no lo reemplaza.
 
 **Futuro:** Pollar **Passkeys** (clave en el dispositivo, sin email) → cero custodia de terceros.
 
-→ [[Onboarding con Pollar (embedded wallet)]].
+→ [[Onboarding con Pollar (custodial + firewall)]].
 
 ---
 
