@@ -58,6 +58,7 @@ Mapa de contenidos (MOC) de la vault. Punto de entrada para todo el proyecto.
 - [[Decisiones técnicas y trade-offs]] — por qué cada decisión y sus implicancias
 - [[Matcher de Identidad (Gate de Capa 1)]] — validación DNI + cara en vivo
 - [[Identidad anónima de plataforma (platformId)]] — el ZK de la Capa 2
+- [[Onboarding con Pollar (embedded wallet)]] — wallet por email para newbies (en diseño) 🧭
 
 ### 06 · Implementación
 - [[Setup del Entorno]]
@@ -66,6 +67,7 @@ Mapa de contenidos (MOC) de la vault. Punto de entrada para todo el proyecto.
 - [[Plan de Demo]]
 - [[Implementación en rama kyc-zk]] — Capa 1: registro completo del viaje
 - [[Implementación Capa 2 (plataforma)]] — Capa 2: plataforma anónima por ZK
+- [[SDK público KYC-ZK + Docs (GitBook)]] — empaquetar el KYC-ZK para terceros (en diseño) 🧭
 - [[Registro de cambios y mejoras]] — decisiones y mejoras implementadas
 - [[Estado actual del desarrollo]] — qué está hecho, en progreso, y próximos pasos
 

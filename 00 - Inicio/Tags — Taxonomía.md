@@ -49,6 +49,7 @@ tags (`#`) y el grafo, más allá de las carpetas. Cada nota tiene tags en su fr
 | Tag | Qué marca |
 |---|---|
 | `#estado/implementado` | Notas que documentan algo ya construido |
+| `#estado/planificado` | Diseño/plan decidido pero aún no implementado |
 
 ## Convención
 

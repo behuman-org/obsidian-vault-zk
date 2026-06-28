@@ -86,6 +86,24 @@ Crowdfunding anónimo y condicional. Detalle en [[10 - Implementación Capa 3 (g
 
 ---
 
+## 🧭 En diseño (decidido, no implementado)
+
+### Onboarding con Pollar (embedded wallet) → newbies web3
+
+Crear wallet **con email** para usuarios nuevos, **sin perder el anonimato ZK**. Se suma a
+Freighter (no lo reemplaza). Pollar (email) es **custodial** → la wallet de Pollar es solo la
+identidad *pública*; el `secret`/`platformId`/efímeras nunca la tocan. KYC-ZK queda **idéntico**
+(integración aditiva al frontend). Detalle + 3 reglas innegociables en
+[[Onboarding con Pollar (embedded wallet)]].
+
+### SDK público KYC-ZK + Docs (GitBook)
+
+Empaquetar el KYC-ZK como SDK reutilizable por terceros + docs en GitBook. Hay que curar el
+API público (Capa 1 + modo anónimo Capa 2), ocultar encoders de bajo nivel, dejar funding
+fuera, y buildear a `dist/`. Detalle en [[SDK público KYC-ZK + Docs (GitBook)]].
+
+---
+
 ## 🟡 En progreso / pendiente
 
 ### Persistencia de credencial (Capa 1)

@@ -273,6 +273,27 @@ salida no se compara con nada es una **restricción muerta** — da falsa seguri
 
 ---
 
+## Decisiones de integraciones (en diseño)
+
+### 17. Pollar (email wallet) solo como identidad pública, firewall-eado
+
+**Decisión:** usar Pollar como onboarding por email para newbies, pero **solo** como wallet
+*pública*; el `secret`/`platformId`/efímeras nunca la tocan, y la efímera nunca se fondea
+desde la wallet de Pollar.
+
+**Razón:** Pollar (email) es **custodial** (clave + email en su server, firma server-side).
+Si la wallet de Pollar entrara al grafo de fondeo de lo anónimo, habría rastro
+`email → opinión`. El firewall mantiene el anonimato intacto.
+
+**Trade-off:** un tercero (Pollar) sabe "email → wallet pública"; sin recuperación sin email.
+Es aditivo (no toca circuito/contrato).
+
+**Futuro:** Pollar **Passkeys** (clave en el dispositivo, sin email) → cero custodia de terceros.
+
+→ [[Onboarding con Pollar (embedded wallet)]].
+
+---
+
 ## Matriz de decisiones
 
 | Decisión | MVP | Producción | Crítica | Auditar |
