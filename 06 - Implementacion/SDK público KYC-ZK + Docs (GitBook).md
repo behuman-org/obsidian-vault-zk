@@ -10,7 +10,7 @@ tags:
 
 **Estado:** EN DISEÑO / PLAN (no implementado). Rama prevista: `sdk-release`.
 
-Objetivo: empaquetar el **KYC-ZK de beHuman como un SDK público reutilizable** para que
+Objetivo: empaquetar el **KYC-ZK de human como un SDK público reutilizable** para que
 terceros agreguen *proof of personhood anónimo en Stellar* a sus propios proyectos, con
 **documentación en GitBook**.
 

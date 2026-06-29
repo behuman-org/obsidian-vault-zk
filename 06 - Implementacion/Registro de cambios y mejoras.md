@@ -8,7 +8,7 @@ tags:
 
 **Rama:** `kyc-zk` en `/Users/mauricio/PROGRAMACION/beHuman`
 
-Historial de cómo se construyó beHuman CAPA 1, con decisiones, cambios y mejoras. Esto es
+Historial de cómo se construyó human CAPA 1, con decisiones, cambios y mejoras. Esto es
 la **documentación viva del viaje de desarrollo**.
 
 ---

@@ -29,11 +29,11 @@ El KYC pesado (documento + biometría) ocurre **off-chain**. El resultado se con
 > Nosotros arrancamos en **Tier 1** con DNI argentino + biometría RENAPER. Tier 2/3 quedan para después.
 
 ### 4. Credenciales reutilizables
-Una vez verificado, el usuario lleva su credencial zkKYC a múltiples servicios. En nuestro caso: la credencial alimenta el commitment que entra al circuito de beHuman.
+Una vez verificado, el usuario lleva su credencial zkKYC a múltiples servicios. En nuestro caso: la credencial alimenta el commitment que entra al circuito de human.
 
-## Mapeo zkMe → beHuman (qué construimos nosotros)
+## Mapeo zkMe → human (qué construimos nosotros)
 
-| Pieza zkMe | Equivalente beHuman | Dónde |
+| Pieza zkMe | Equivalente human | Dónde |
 |------------|---------------------|-------|
 | KYC provider (doc + cara) | RENAPER SID + parseo DNI | `03`, `04`, `05` |
 | MeID "One Face, One DID" | Secreto de identidad + **nullifier** | `06` |

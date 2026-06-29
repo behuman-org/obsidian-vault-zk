@@ -91,7 +91,7 @@ Crowdfunding anónimo y condicional. Detalle en [[10 - Implementación Capa 3 (g
 
 Implementado (rama `pollar-onboarding`, commit `a6e94fe`). Crear wallet **con email** para
 usuarios nuevos **sin perder el anonimato ZK**. Se suma a Freighter (no lo reemplaza).
-Pollar (email) es **custodial** y **no firma nada** de beHuman: solo crea la wallet. El KYC
+Pollar (email) es **custodial** y **no firma nada** de human: solo crea la wallet. El KYC
 corre en modo "credencial" (matcher → credencial ZK client-side, **sin** on-chain). Las
 acciones anónimas siguen por `platformId` + efímeras (friendbot), nunca desde Pollar.
 Archivos: `web/src/identity/pollar.tsx`, `AuthPage`, `KycFlow mode="credential"`,

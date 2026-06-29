@@ -7,7 +7,7 @@ tags:
 
 # 02 — DeFindex (Yield en Blend)
 
-Rol en beHuman: **dónde vive el dinero recaudado y cómo genera rendimiento** mientras la
+Rol en human: **dónde vive el dinero recaudado y cómo genera rendimiento** mientras la
 causa se llena. Fuente: https://docs.defindex.io/
 
 ## Qué es DeFindex
@@ -33,7 +33,7 @@ DeFindex define roles que son **direcciones** y **pueden ser contratos** (contro
 políticas). Esto es central: el "dueño" del vault puede ser un **contrato controlador** que
 solo deja mover fondos según las reglas de la campaña.
 
-| Rol DeFindex | Qué hace | En beHuman |
+| Rol DeFindex | Qué hace | En human |
 |---|---|---|
 | **Manager** | Dueño; configura, asigna roles, puede ser multisig/contrato | **Contrato controlador de campaña** (reglas de release/refund) |
 | **Rebalance Manager** | Mueve fondos entre estrategias | Bot/operador de la plataforma (mantiene en Blend) |
@@ -71,7 +71,7 @@ Endpoints relevantes: `deposit`, `withdraw`, `balance`, `apy`. Ver
 > [!note] Punto de integración a definir
 > La pieza fina: que el **Manager del vault sea un contrato** cuyo permiso de withdraw esté
 > atado al **estado "released" del escrow de Trustless Work**. Decisión de implementación en
-> [[07 - Arquitectura y que toca en beHuman]] y [[08 - Roadmap y Preguntas Abiertas]].
+> [[07 - Arquitectura y que toca en human]] y [[08 - Roadmap y Preguntas Abiertas]].
 
 ## Siguiente
 → [[03 - Trustless Work (Escrow y Release)]]

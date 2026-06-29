@@ -10,7 +10,7 @@ tags:
 
 **Rama:** `kyc-zk` en `/Users/mauricio/PROGRAMACION/beHuman`
 
-Registro de cómo se construyó la **CAPA 1 (identidad)** de beHuman, parte por parte, con
+Registro de cómo se construyó la **CAPA 1 (identidad)** de human, parte por parte, con
 enlaces a las decisiones de diseño y al código real.
 
 > 🎯 **Objetivo:** un usuario valida su identidad (DNI + cara viva) en testnet, recibe una

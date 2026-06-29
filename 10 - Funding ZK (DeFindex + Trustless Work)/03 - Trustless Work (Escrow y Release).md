@@ -7,7 +7,7 @@ tags:
 
 # 03 — Trustless Work (Escrow y Release)
 
-Rol en beHuman: **gobierna cuándo y si** el dinero sale hacia la causa. Es la capa de
+Rol en human: **gobierna cuándo y si** el dinero sale hacia la causa. Es la capa de
 **condiciones, aprobaciones, multi-firma y disputas**. Fuente:
 https://docs.trustlesswork.com/trustless-work
 
@@ -19,14 +19,14 @@ escribir el contrato de escrow desde cero. Se maneja por **API** o **SDK React**
 
 ## Roles del escrow (y cómo los mapeamos)
 
-| Rol Trustless Work | Qué hace | En beHuman |
+| Rol Trustless Work | Qué hace | En human |
 |---|---|---|
 | **Service Provider** | Ejecuta la tarea; actualiza estado del hito; sube evidencia | **La causa** (reporta avances/tareas cumplidas) |
 | **Approver** | Valida que el hito se cumplió (firma aprobación) | **Plataforma** (revisa la evidencia) |
 | **Release Signer** | Ejecuta la liberación de fondos | **Multi-firma: causa + plataforma + neutral** |
 | **Receiver** | Destino final de los fondos | **Wallet de la causa** |
 | **Dispute Resolver** | Resuelve conflictos, puede redirigir fondos | **Tercero neutral** |
-| **Platform Address** | Cobra fee de plataforma; edita antes de fondear | **beHuman** |
+| **Platform Address** | Cobra fee de plataforma; edita antes de fondear | **human** |
 | **Depositor** | Cualquiera que aporta fondos (sin permisos) | **Donantes anónimos** |
 
 > Detalle de la asignación y combos seguros/riesgosos en [[05 - Roles y Modelo de Confianza]].

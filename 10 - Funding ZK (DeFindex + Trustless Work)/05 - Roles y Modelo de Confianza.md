@@ -12,11 +12,11 @@ los fondos ni liberar a dedo).
 
 ## Mapa único de actores → roles
 
-| Actor beHuman | Rol DeFindex (vault) | Rol Trustless Work (escrow) |
+| Actor human | Rol DeFindex (vault) | Rol Trustless Work (escrow) |
 |---|---|---|
 | **Donante (anónimo)** | Depositante (recibe shares) | Depositor (sin permisos de control) |
 | **Causa / beneficiario** | — | **Service Provider** (reporta tareas) + **Receiver** (recibe el pago) |
-| **Plataforma (beHuman)** | **Manager** vía contrato controlador + Fee Receiver | **Approver** + **Platform Address** + 1 firma del release |
+| **Plataforma (human)** | **Manager** vía contrato controlador + Fee Receiver | **Approver** + **Platform Address** + 1 firma del release |
 | **Tercero neutral** | (co-firma de seguridad opcional) | **Dispute Resolver** + 1 firma del release |
 | **Contrato controlador** | **Manager** (reglas de release/refund) | (lee el estado del escrow) |
 

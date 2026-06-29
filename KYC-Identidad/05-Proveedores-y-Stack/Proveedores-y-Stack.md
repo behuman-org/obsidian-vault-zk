@@ -13,7 +13,7 @@ Regla: **no reinventar liveness ni el canal a RENAPER.** Reinventamos solo la **
 - **Qué da**: validación de datos del DNI + **validación biométrica facial** contra la foto oficial (SID).
 - **Cómo**: API REST de los **Servicios de Validación de Identidad** de RENAPER.
 - **Requisito**: ser **organización autorizada** (convenio/habilitación). Hay fricción legal y de onboarding.
-- **Cuándo**: cuando beHuman tenga entidad legal y volumen que justifique el canal directo.
+- **Cuándo**: cuando human tenga entidad legal y volumen que justifique el canal directo.
 
 ## Opción B — Proveedor licenciado sobre RENAPER (recomendado para arrancar real ya)
 
@@ -44,7 +44,7 @@ Conclusión: lo open sirve para la **UX de captura** y prototipos; la **validaci
 ## Stack técnico propuesto
 
 ```
-Frontend (captura)         → React/TypeScript (encaja con beHuman)
+Frontend (captura)         → React/TypeScript (encaja con human)
                              - @zxing/library  (PDF417 del dorso)
                              - getUserMedia / cámara (selfie)
                              - SDK del proveedor de liveness (web)

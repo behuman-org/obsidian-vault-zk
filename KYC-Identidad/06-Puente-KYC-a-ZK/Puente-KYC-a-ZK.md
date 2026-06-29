@@ -41,7 +41,7 @@ Una identidad se compone de:
      (de-dup por hash del documento/RENAPER, off-chain, anti-Sybil de origen)
    - agrega el commitment como hoja en el MERKLE TREE de humanos verificados
    - publica/actualiza el issuer_root (raíz del árbol)
-   - firma una credencial (opcional) atando commitment ↔ "verificado por beHuman"
+   - firma una credencial (opcional) atando commitment ↔ "verificado por human"
 
 4. El issuer DESCARTA el PII (según política de retención, ver 09)
 
@@ -72,7 +72,7 @@ Una identidad se compone de:
 ## Decisiones de diseño abiertas (para el equipo)
 
 - **De-dup en origen sin guardar PII:** guardar **solo** `hash(identificador_oficial)` (no el DNI en claro) para detectar duplicados. ¿Con sal global? ¿pepper? (definir con `09`).
-- **¿Issuer centralizado o federado?** MVP: un issuer (beHuman). Futuro: varios issuers confiables (multi-root), como prevé el contrato (`issuer_root` ∈ set confiable).
+- **¿Issuer centralizado o federado?** MVP: un issuer (human). Futuro: varios issuers confiables (multi-root), como prevé el contrato (`issuer_root` ∈ set confiable).
 - **Custodia del secreto:** ¿lo guarda el wallet del usuario? ¿passkey? Hay que definir UX de recuperación sin romper el no-custodial.
 - **Predicados (Tier 2):** `is_adult`, `country_ok` se pueden incluir como señales públicas derivadas del KYC (la fecha de nac. del DNI prueba mayoría de edad **sin revelar** la fecha).
 

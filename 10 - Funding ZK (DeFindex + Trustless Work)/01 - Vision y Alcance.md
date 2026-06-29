@@ -12,12 +12,12 @@ tags:
 Donar a causas hoy implica **confiar a ciegas**: ¿el dinero llega? ¿se usa para lo que
 dijeron? ¿quién controla los fondos en el medio? Y del otro lado, mucha gente **no dona ni
 apoya causas sensibles** (políticas, de denuncia, de derechos) por **miedo a quedar
-expuesta**. beHuman ya resuelve "humano real + anónimo"; acá lo extendemos a **mover dinero
+expuesta**. human ya resuelve "humano real + anónimo"; acá lo extendemos a **mover dinero
 hacia causas, de forma anónima y con garantías**.
 
 ## Qué construimos
 
-Una vertical de **crowdfunding anónimo y condicional** dentro de beHuman:
+Una vertical de **crowdfunding anónimo y condicional** dentro de human:
 
 1. La **plataforma estudia una causa** (due diligence por fuera) y la publica como campaña
    con: **monto meta**, **tareas/hitos**, **wallet de la causa** y **validadores**.
@@ -32,14 +32,14 @@ Una vertical de **crowdfunding anónimo y condicional** dentro de beHuman:
 
 - **Donante** — humano verificado que quiere apoyar una causa **sin exponer su identidad**.
 - **Causa / beneficiario** — quien recibe los fondos al cumplir las condiciones.
-- **Plataforma (beHuman)** — estudia causas, orquesta DeFindex + Trustless Work, co-valida.
+- **Plataforma (human)** — estudia causas, orquesta DeFindex + Trustless Work, co-valida.
 - **Validador neutral** — tercero que aprueba/disputas para evitar abuso de cualquier parte.
 
 ## Principios de diseño
 
 - **ZK primero, identidad nunca revelada.** Ni del donante ni (salvo acuerdo explícito) del
   beneficiario. Ver [[06 - ZK, Anonimato y Liberacion de Informacion]].
-- **No-custodial.** Ni beHuman ni nadie puede llevarse los fondos: DeFindex y Trustless Work
+- **No-custodial.** Ni human ni nadie puede llevarse los fondos: DeFindex y Trustless Work
   son no-custodiales por diseño; el release exige reglas y multi-firma.
 - **Productivo mientras espera.** El dinero recaudado **no queda quieto**: genera yield en
   Blend, y ese yield **va a la causa**.

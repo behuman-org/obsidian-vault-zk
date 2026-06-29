@@ -62,11 +62,14 @@ revocación de credenciales, recovery, soulbound tokens, UI pulida.
 
 ## Nombre del proyecto
 
-> 🏷️ **Nombre de trabajo: `beHuman`** *(provisional, en proceso de definición)*.
+> 🏷️ **El proyecto se llama `human`.** (Antes se usó `beHuman` como nombre de trabajo.)
 >
 > Captura el núcleo del producto: **proof of personhood** — demostrar que sos una persona
-> real y única ([[Prueba de Persona Única]]) sin revelar quién sos. El monorepo de código
-> vive bajo la organización **beHuman** en GitHub (ver [[Estructura del Codigo]]).
+> real y única ([[Prueba de Persona Única]]) sin revelar quién sos.
+>
+> ⚙️ **Identificadores técnicos (siguen como `beHuman`):** la org de GitHub es **`ACRC-Zk`**,
+> el repo de código es **`beHuman`** y los paquetes son **`@behuman/*`** (ver
+> [[Estructura del Codigo]]). El nombre de **producto** es **human**; esos son nombres internos.
 
 Candidatos previos de brainstorming (por si reabrimos la decisión):
 

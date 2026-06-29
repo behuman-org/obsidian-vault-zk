@@ -128,7 +128,7 @@ opiniones).
       → [[Prueba de Persona Única]]
 - [ ] ¿La lectura del contenido es libre o sólo para verificados? → [[Identidad Pública vs Anónima#Visibilidad y acceso]]
 - [ ] ¿Qué valida exactamente un agente y dónde empieza la moderación humana? → [[Curaduría y Agentes Validadores]]
-- [x] **Nombre del proyecto:** `beHuman` *(nombre de trabajo, en definición)* → [[Vision General#Nombre del proyecto]]
+- [x] **Nombre del proyecto:** **`human`** *(definido; repo/org/paquetes siguen como `beHuman`/`ACRC-Zk`/`@behuman/*`)* → [[Vision General#Nombre del proyecto]]
 
 > 🔁 Nota para el equipo: las notas [[Vision General]] y [[Casos de Uso]] se escribieron
 > antes con un enfoque genérico (compliance / rampas fiat). Conviene realinearlas a esta

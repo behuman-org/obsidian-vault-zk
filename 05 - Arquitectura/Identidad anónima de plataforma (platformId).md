@@ -92,7 +92,7 @@ efectiva **sin** saber quién es la persona.
 
 ## El `SCOPE`
 
-`platformId = Poseidon(secret, SCOPE)` donde `SCOPE` es una constante del dominio beHuman.
+`platformId = Poseidon(secret, SCOPE)` donde `SCOPE` es una constante del dominio human.
 
 - Con un `SCOPE` distinto se derivan **identidades incorrelacionables** entre contextos
   (ej. otra app, otro foro) — la misma persona tendría seudónimos distintos y no linkeables.

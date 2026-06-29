@@ -8,7 +8,7 @@ tags:
 
 ## El problema a resolver
 
-beHuman necesita una **prueba de personhood real**: que detrás de una dirección de Stellar haya un humano **real** (no un bot) y **único** (no la misma persona 1000 veces), **sin exponer su identidad**. La tensión "real + anónimo" se resuelve en dos capas:
+human necesita una **prueba de personhood real**: que detrás de una dirección de Stellar haya un humano **real** (no un bot) y **único** (no la misma persona 1000 veces), **sin exponer su identidad**. La tensión "real + anónimo" se resuelve en dos capas:
 
 - **Capa de realness (KYC, off-chain)** → esta investigación. Verifica al humano de verdad.
 - **Capa ZK (on-chain)** → prueba pertenencia al set de verificados + nullifier anti-doble-registro.

@@ -1,11 +1,11 @@
 ---
-título: Endpoints y pantallas del front definitivo — beHuman
+título: Endpoints y pantallas del front definitivo — human
 tipo: especificación para el agente de frontend
 estado: análisis (no implementa front)
 fecha: 2026-06-27
 ---
 
-# beHuman — Mapa del Front Definitivo (pantallas ↔ endpoints)
+# human — Mapa del Front Definitivo (pantallas ↔ endpoints)
 
 > **Para el agente de frontend:** este documento es **autosuficiente**. Construí el front
 > definitivo basándote solo en esto. Cada pantalla dice **qué ve el humano**, **qué datos
@@ -19,7 +19,7 @@ fecha: 2026-06-27
 
 ## 1. El producto y sus 3 capas
 
-beHuman es una plataforma donde **personas reales y únicas** participan **sin revelar quiénes
+human es una plataforma donde **personas reales y únicas** participan **sin revelar quiénes
 son**. Se apoya en pruebas de conocimiento cero (ZK) sobre Stellar/Soroban. Tiene 3 capas.
 
 - **Capa 1 · Identidad (KYC-ZK).** *Prueba de persona única.* La persona valida su identidad
@@ -463,7 +463,7 @@ Nunca, en ninguna pantalla:
 | §1 Producto / capas | [[IDEA]], [[Vision General]], [[Casos de Uso]], README |
 | A (Identidad) | [[Flujo de KYC]], [[Matcher de Identidad (Gate de Capa 1)]], [[Spec — Matcher DNI + Selfie (Capa 1)]], [[Modelo de Datos]], [[Contrato Verificador (Soroban)]], [[Puente-KYC-a-ZK]], [[Cumplimiento-Argentina]], [[Arquitectura General]] |
 | E (Opiniones) | [[Plataforma de Opinión Verificada]], [[Identidad Pública vs Anónima]], [[Curaduría y Agentes Validadores]], [[Identidad anónima de plataforma (platformId)]], [[09 - Opiniones Anonimas sobre la Causa]] |
-| B/C/D (Funding) | [[01 - Vision y Alcance]], [[02 - DeFindex (Yield en Blend)]], [[03 - Trustless Work (Escrow y Release)]], [[04 - Flujo End-to-End (con ZK)]], [[05 - Roles y Modelo de Confianza]], [[06 - ZK, Anonimato y Liberacion de Informacion]], [[07 - Arquitectura y que toca en beHuman]], [[08 - Roadmap y Preguntas Abiertas]], [[10 - Implementación Capa 3 (ground-funding)]] |
+| B/C/D (Funding) | [[01 - Vision y Alcance]], [[02 - DeFindex (Yield en Blend)]], [[03 - Trustless Work (Escrow y Release)]], [[04 - Flujo End-to-End (con ZK)]], [[05 - Roles y Modelo de Confianza]], [[06 - ZK, Anonimato y Liberacion de Informacion]], [[07 - Arquitectura y que toca en human]], [[08 - Roadmap y Preguntas Abiertas]], [[10 - Implementación Capa 3 (ground-funding)]] |
 | Código real | repo `beHuman` (org ACRC-Zk): `identity/`, `platform/`, `funding/`, `packages/sdk/`, `packages/shared/`, `web/` |
 
 ---

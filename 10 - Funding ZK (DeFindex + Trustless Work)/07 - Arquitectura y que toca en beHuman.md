@@ -5,7 +5,7 @@ tags:
   - zk
 ---
 
-# 07 — Arquitectura y qué toca en beHuman
+# 07 — Arquitectura y qué toca en human
 
 Cómo encaja esta vertical en el monorepo `beHuman` (org `ACRC-Zk`). Estructura base:
 [[Estructura del Codigo]].

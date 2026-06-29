@@ -6,7 +6,7 @@ tags:
 
 # Decisiones técnicas y trade-offs
 
-**Rama:** `kyc-zk` · Decisiones que rigen el diseño de beHuman CAPA 1.
+**Rama:** `kyc-zk` · Decisiones que rigen el diseño de human CAPA 1.
 
 Cada decisión tiene una **razón**, un **trade-off**, y un **futuro** (cómo evoluciona).
 
@@ -278,7 +278,7 @@ salida no se compara con nada es una **restricción muerta** — da falsa seguri
 ### 17. Pollar (email wallet) firewall-eado — Pollar **no firma nada**
 
 **Decisión (implementada):** usar Pollar como onboarding por email para newbies, pero **solo
-para crear la wallet**. Pollar **no firma** ninguna tx de beHuman; el KYC corre en modo
+para crear la wallet**. Pollar **no firma** ninguna tx de human; el KYC corre en modo
 "credencial" (matcher → credencial ZK client-side, sin on-chain). El `secret`/`platformId`/
 efímeras nunca tocan Pollar, y la efímera nunca se fondea desde su wallet.
 

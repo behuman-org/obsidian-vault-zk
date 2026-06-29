@@ -7,7 +7,7 @@ tags:
 
 # 10 — Funding ZK (DeFindex + Trustless Work)
 
-Nueva integración para beHuman: **crowdfunding anónimo para causas**, construido sobre la
+Nueva integración para human: **crowdfunding anónimo para causas**, construido sobre la
 identidad verificada-pero-anónima de [[Arquitectura General|Capa 1]] y dos integraciones de
 Stellar:
 
@@ -48,7 +48,7 @@ Stellar:
 | 04 | [[04 - Flujo End-to-End (con ZK)]] | El recorrido completo, paso a paso, con anonimato |
 | 05 | [[05 - Roles y Modelo de Confianza]] | Quién hace qué; mapeo a causa/plataforma/neutral/donante |
 | 06 | [[06 - ZK, Anonimato y Liberacion de Informacion]] | Cómo se mantiene privado; revelar info con acuerdo de 2+ |
-| 07 | [[07 - Arquitectura y que toca en beHuman]] | Componentes y carpetas del monorepo que se tocan |
+| 07 | [[07 - Arquitectura y que toca en human]] | Componentes y carpetas del monorepo que se tocan |
 | 08 | [[08 - Roadmap y Preguntas Abiertas]] | Fases, decisiones pendientes, referencias |
 | 09 | [[09 - Opiniones Anonimas sobre la Causa]] | Opinar incógnito (ZK) dentro de cada campaña |
 | 10 | [[10 - Implementación Capa 3 (ground-funding)]] | **Lo construido**: circuito, contrato, API, SDK, web, auditoría |
@@ -59,7 +59,7 @@ Stellar:
   es una **prueba ZK de pertenencia** al árbol del issuer (`issuerRoot`), **no**
   `is_verified(address)` — para no deanonimizar. → [[Identidad anónima de plataforma (platformId)]].
 - **Es una nueva vertical de aplicación** (junto a la [[Plataforma de Opinión Verificada]]):
-  beHuman pasa de "opinar con confianza" a "**financiar causas con confianza**", sin exponer
+  human pasa de "opinar con confianza" a "**financiar causas con confianza**", sin exponer
   identidades.
 - **Trae la opinión adentro del funding:** cada campaña tiene su hilo de **opiniones
   anónimas verificadas** (mismo modelo `platformId` de Capa 2, scopeado a la causa) →

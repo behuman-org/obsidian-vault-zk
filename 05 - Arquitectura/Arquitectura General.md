@@ -72,7 +72,7 @@ flowchart LR
     L1 --> L2 --> L3 --> L4
 ```
 
-## beHuman completo: las dos capas juntas
+## human completo: las dos capas juntas
 
 La capa 4 (*dApp consumidora*) **es** la [[Plataforma de Opinión Verificada]].
 

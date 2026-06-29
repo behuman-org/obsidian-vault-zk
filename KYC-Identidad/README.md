@@ -4,7 +4,7 @@ tags:
   - capa/1-identidad
 ---
 
-# KYC-Identidad — Investigación base (beHuman)
+# KYC-Identidad — Investigación base (human)
 
 Objetivo: construir la capa de **KYC real (sin mocks)** que valida que detrás de una wallet hay un **humano real y único**, para luego alimentar los **circuitos ZK** y marcar `Verified(address)` on-chain en Stellar/Soroban.
 

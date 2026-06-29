@@ -7,7 +7,7 @@ tags:
 
 # Capa 2 — Plataforma de Opinión (implementación y uso)
 
-Cómo está construida y cómo se usa la **CAPA 2** de beHuman: la plataforma de opinión donde
+Cómo está construida y cómo se usa la **CAPA 2** de human: la plataforma de opinión donde
 personas verificadas participan de forma **anónima por ZK**. Concepto en
 [[Plataforma de Opinión Verificada]] y [[Identidad Pública vs Anónima]]; decisiones en
 [[Decisiones técnicas y trade-offs]].

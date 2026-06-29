@@ -116,6 +116,6 @@ Mapa de contenidos (MOC) de la vault. Punto de entrada para todo el proyecto.
 
 ## ❓ Decisiones abiertas
 
-- **Nombre del proyecto:** `beHuman` *(nombre de trabajo, en definición)* → [[Vision General#Nombre del proyecto]]
+- **Nombre del proyecto:** **`human`** *(definido; repo/org/paquetes siguen como `beHuman`/`ACRC-Zk`/`@behuman/*`)* → [[Vision General#Nombre del proyecto]]
 - **Toolchain ZK:** Noir (favorito) vs Circom vs RISC Zero → [[Comparativa de Herramientas ZK]]
 - **Modelo de confianza del issuer:** ¿uno o varios emisores de KYC? → [[Modelo de Datos]]

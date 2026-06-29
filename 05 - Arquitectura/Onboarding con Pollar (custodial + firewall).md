@@ -10,7 +10,7 @@ tags:
 
 > **Mergeado a `main`** (rama `pollar-onboarding`). Pollar (`@pollar/react`, embedded wallet de
 > Stellar) se integra **solo** como forma amigable de que un usuario sin wallet cree una cuenta
-> con **email/Google**. **No firma nada** de beHuman ni participa del anonimato.
+> con **email/Google**. **No firma nada** de human ni participa del anonimato.
 > Docs del repo: `docs/pollar-onboarding.md` + `docs/pollar-audit.md`.
 
 ## El problema que resuelve
@@ -28,13 +28,13 @@ Pollar permite **crear una wallet con email** en segundos. Pero el login email d
 ```
 
 - El **`secret`** (raíz del anonimato) se genera y vive **solo en el dispositivo** — igual que
-  en [[Implementación en rama kyc-zk]]. Nunca se envía a Pollar ni a beHuman.
+  en [[Implementación en rama kyc-zk]]. Nunca se envía a Pollar ni a human.
 - El **`platformId`** se deriva en el navegador (ver [[Identidad anónima de plataforma (platformId)]]).
 - Las acciones anónimas (posts, opiniones, donaciones) usan **wallets efímeras** (friendbot),
   **nunca** la wallet de Pollar → sin rastro Pollar → efímera → opinión.
-- El **email** vive solo en Pollar; beHuman no lo guarda ni lo mapea a `platformId`.
+- El **email** vive solo en Pollar; human no lo guarda ni lo mapea a `platformId`.
 
-## Qué firma Pollar en beHuman: **nada**
+## Qué firma Pollar en human: **nada**
 
 Decisión de producto: Pollar es **solo creación de wallet**. El registro on-chain de Capa 1
 (`verify_and_register`, invoke Soroban que requiere firma del titular) **no** se hace por Pollar;
@@ -47,7 +47,7 @@ matcher (DNI + cara) → credencial ZK client-side → listo.
 1. `secret`/`platformId` solo client-side.
 2. La wallet de Pollar es entrada pública; las anónimas usan efímeras.
 3. Efímeras fondeadas por friendbot, nunca desde Pollar.
-4. El email nunca toca beHuman; sin mapeo email↔platformId.
+4. El email nunca toca human; sin mapeo email↔platformId.
 5. Se SUMA a Stellar Wallets Kit (Freighter sigue para usuarios cripto).
 
 ## Implementación (web)
@@ -80,7 +80,7 @@ Revisión de funcionamiento + invariantes ZK. Veredicto: **los 5 invariantes se 
 > ⚠️ **N1 — Acción de seguridad pendiente:** durante el setup se compartió una secret key
 > `sec_testnet_…` por chat. No está en el repo ni se usa en el cliente, pero **debe rotarse**.
 > En el navegador solo va la **publishable** `pub_testnet_…` (segura). N3: queda la correlación
-> por timing (Pollar conoce `email→hora`, beHuman `platformId→hora`) — sin id compartido, pero
+> por timing (Pollar conoce `email→hora`, human `platformId→hora`) — sin id compartido, pero
 > es la limitación general ya documentada.
 
 Relacionado: [[Identidad Pública vs Anónima]], [[Identidad anónima de plataforma (platformId)]],

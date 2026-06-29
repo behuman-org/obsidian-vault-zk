@@ -74,4 +74,4 @@ flowchart LR
   crea un segundo sistema de identidad.
 
 ## Siguiente
-→ [[07 - Arquitectura y que toca en beHuman]]
+→ [[07 - Arquitectura y que toca en human]]
