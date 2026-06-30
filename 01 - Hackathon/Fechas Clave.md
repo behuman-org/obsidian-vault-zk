@@ -37,10 +37,10 @@ gantt
 
 ## Hitos propios
 
-- [ ] **22 jun** — arquitectura y toolchain cerradas
-- [ ] **25 jun** — circuito + verificador funcionando aislados
-- [ ] **27 jun** — flujo end-to-end en testnet
-- [ ] **28 jun** — README pulido + video grabado
+- [x] **22 jun** — arquitectura y toolchain cerradas
+- [x] **25 jun** — circuito + verificador funcionando aislados
+- [x] **27 jun** — flujo end-to-end en testnet
+- [x] **28 jun** — README pulido + video grabado
 - [ ] **29 jun** — submission antes de las 12:00 PM PST (con buffer)
 
 Ver: [[Roadmap]] · [[Plan de Demo]]
