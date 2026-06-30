@@ -7,7 +7,7 @@ tags:
 
 Esta es una **vault de Obsidian** que funciona como el cerebro del proyecto: aquí vive
 todo lo que necesitamos para diseñar, entender y construir un sistema de **KYC con
-Zero-Knowledge sobre la red Stellar** para la hackathon *Stellar Hacks: Real-World ZK*.
+Zero-Knowledge sobre la red Stellar** para la hackathon.
 
 > ⚠️ Este repositorio es **documentación**, no el código de producción. Aquí guardamos
 > diagramas, explicaciones, decisiones de arquitectura e investigación. El código del
